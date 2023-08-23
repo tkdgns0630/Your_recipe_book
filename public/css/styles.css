@@ -1,40 +1,79 @@
-
+/* body */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
 }
 
+/* navbar */
 .navbar {
-    overflow: hidden;
-    background-color: #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    padding: 10px;
+  overflow: hidden;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
 }
-
 .navbar h1 {
-    color: #222;
-    margin: 0;
-    padding: 0;
+  color: #222;
+  margin: 0;
+  padding: 0;
 }
-
 .navbar a {
-    color: #222;
-    text-decoration: none;
+  color: #222;
+  text-decoration: none;
 }
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-
-  }
 .navbar a:hover {
     background-color: #949393;
+  }
+
+/* Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
-.dropdown:hover .dropdown-content {display: block;    display: flex;
-    flex-direction: column;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  display: flex;
+  flex-direction: column;
+}
+
+/* grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Change to grid-template-columns */
+  grid-auto-rows: minmax(100px, auto); 
+  border: 3px solid lightslategray;
+  min-height: 100vh;
+}
+.box {
+  grid-column: span 4;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  margin-left: 1rem;
+}
+.gridbtns {
+  grid-row: 1;
+  grid-column: span 4;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+button{
+    grid-row: 1;
+    grid-column: span 4;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.dropdown{
+    width: 100%;
+}
