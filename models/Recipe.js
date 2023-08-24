@@ -1,10 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Project extends Model {}
+class Recipe extends Model {}
 
-Project.init(
-  {
+Recipe.init({
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,17 +14,19 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
+    ingredients: {
+      type: DataTypes.STRING(1234),
+    },
+    method: {
+      type: DataTypes.STRING(1234),
+    },
+    prep_time:{
+      type: DataTypes.INTEGER
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -40,8 +41,8 @@ Project.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'recipe',
   }
 );
 
-module.exports = Project;
+module.exports = Recipe;
