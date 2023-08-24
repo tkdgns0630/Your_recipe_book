@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
 
-class CategoryTag extends Model {}
+class UserFavourites extends Model {}
 
-CategoryTag.init(
+UserFavourites.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -21,11 +21,11 @@ CategoryTag.init(
         unique: false
       }
     },
-    catId: {
+    userId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'category',
+        model: 'user',
         key: 'id',
         unique: false
       }
@@ -36,8 +36,8 @@ CategoryTag.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'cat_tag',
+    modelName: 'user_favourite',
   }
 );
 
-module.exports = CategoryTag;
+module.exports = UserFavourites;
