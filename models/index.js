@@ -48,4 +48,4 @@ Recipe.belongsToMany(User,{
 });
 
 
-module.exports = { User, Recipe, Category, Comment, CategoryTag};
+module.exports = { User, Recipe, Category, Comment, CategoryTag, UserFavourites};
