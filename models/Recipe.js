@@ -20,21 +20,36 @@ Recipe.init({
     method: {
       type: DataTypes.STRING(1234),
     },
-    prep_time:{
+    prepTime:{
       type: DataTypes.INTEGER
     },
-    date_created: {
+    dateCreated: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
         key: 'id',
       },
     },
+    likes: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      defaultValue: 0
+    },
+    hasNuts: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    vegan: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    }
   },
   {
     sequelize,

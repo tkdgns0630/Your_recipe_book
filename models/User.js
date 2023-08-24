@@ -28,9 +28,17 @@ User.init(
         isEmail: true,
       },
     },
-    is_Admin:{
+    isAdmin:{
       type: DataTypes.BOOLEAN,
       default: false,
+    },
+    favourites:{
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references:{
+        model: 'user_favourites',
+        key:id
+      }
     },
     password: {
       type: DataTypes.STRING,
