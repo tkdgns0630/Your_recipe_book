@@ -5,11 +5,11 @@
     <button><h2>Latest</h2></button>
     <div class='dropdown'>
       <button class='dropbtn'><h2>Categories</h2></button>
-        <div class='dropdown-content'>
-      {{#each categories as |category|}}
+      <div class='dropdown-content'>
+        {{#each categories as |category|}}
           <a href={{category.id}}>{{category.cat_name}}</a>
-      {{/each}}
-        </div>
+        {{/each}}
+      </div>
     </div>
   </div>
   {{#each recipes as |recipe|}}
