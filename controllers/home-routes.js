@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Category = require('../models/Category');
 const Recipe = require('../models/Recipe');
 
+
 // route to get all categories and recipies
 router.get('/', async (req, res) => {
   const categoryData = await Category.findAll();
@@ -14,7 +15,9 @@ router.get('/', async (req, res) => {
 
   console.log('Categories:', categories);
   console.log('Recipes:', recipes);
-  res.render('all', { categories, recipes });
+ res.render('all', {recipes,categories});
+
+ 
 });
 
 module.exports = router;

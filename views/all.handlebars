@@ -1,20 +1,9 @@
 <div class='grid-container'>
-  <div class='gridbtns'>
-    <button><h2>Top Recipes</h2></button>
-    <button><h2>Latest</h2></button>
-    <button><h2>Latest</h2></button>
-    <div class='dropdown'>
-      <button class='dropbtn'><h2>Categories</h2></button>
-        <div class='dropdown-content'>
-      {{#each categories as |category|}}
-          <a href={{category.id}}>{{category.cat_name}}</a>
-      {{/each}}
-        </div>
-    </div>
-  </div>
+  
   {{#each recipes as |recipe|}}
-    <div class='box'>
+    <div class='recipe-content'>
       {{!-- <img src={{recipe.image_url}} alt={{recipe.name}} /> --}}
+      <img src="/images.png" alt= />
       <p>{{recipe.name}}</p>
     </div>
   {{/each}}
