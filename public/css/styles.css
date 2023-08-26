@@ -7,7 +7,7 @@ body {
 
 /* navbar */
 .navbar {
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: #e0e0e0;
   display: flex;
   align-items: center;
@@ -77,4 +77,20 @@ button{
 .dropdown{
     width: 100%;
     position: relative;
+}
+.selection {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-left: 2rem;
+  height: 4rem;
+  align-items: center;
+}
+.recipe-content {
+  grid-column: span 4;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  margin-left: 1rem;
 }

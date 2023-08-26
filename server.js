@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 // handling unmatched routes and serving  404
 app.get('*', (req, res) => {
-  res.status(404).send('dish not found');
+  res.status(404).send('page not found');
 });
 
 sequelize.sync({ force: false }).then(() => {
