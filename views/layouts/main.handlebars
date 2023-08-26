@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="navbar">
+  <div class="navbar-head">
   <h1>Your Recipe Book</h1>
   <a href="#">Profile</a>
   <a href="#">Contact</a>
@@ -29,10 +29,13 @@
           categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-       
-          <a class="dropdown-item" href="#">Asian</a>
+       {{#each categories as |category|}}
+          <a href={{category.id}}>{{category.cat_name}}</a>
+      {{/each}}
+      {{category.category_name}}
+          {{!-- <a class="dropdown-item" href="#">Asian</a>
           <a class="dropdown-item" href="#">Italian</a>
-          <a class="dropdown-item" href="#">Indian</a>
+          <a class="dropdown-item" href="#">Indian</a> --}}
         </div>
       </li>
          
@@ -40,7 +43,7 @@
 
   </div>
 </nav>
-
+ {{category.category_name}}
         {{{ body }}}
        
       </main>
