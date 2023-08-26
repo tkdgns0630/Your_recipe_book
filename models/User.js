@@ -36,8 +36,8 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: true,
       references:{
-        model: 'user_favourites',
-        key:id
+        model: 'user_favourite',
+        key:'id'
       }
     },
     password: {
