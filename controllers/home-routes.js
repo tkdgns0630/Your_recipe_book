@@ -4,13 +4,14 @@ const withAuth = require('../utils/auth');
 
 // route to get all categories and recipies
 router.get('/', async (req, res) => {
+  const loggedIn = req.session.logged_in;
   const categoryData = await Category.findAll();
   const recipeData = await Recipe.findAll();
   const categories = categoryData.map((category) =>
     category.get({ plain: true })
   );
   const recipes = recipeData.map((recipie) => recipie.get({ plain: true }));
-  res.render('all', { recipes, categories });
+  res.render('all', { recipes, categories, logged_in: loggedIn });
 });
 
 // Use withAuth middleware to prevent access to route
