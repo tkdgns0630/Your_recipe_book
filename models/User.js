@@ -28,24 +28,24 @@ User.init(
         isEmail: true,
       },
     },
-    isAdmin:{
+    isAdmin: {
       type: DataTypes.BOOLEAN,
       default: false,
     },
-    favourites:{
+    favourites: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      references:{
+      references: {
         model: 'user_favourite',
-        key:'id'
-      }
+        key: 'id',
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [8],
-        is: /^[a-z]+$/i
+        // is: /^[a-z]+$/i
       },
     },
   },
@@ -56,7 +56,10 @@ User.init(
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
     },
