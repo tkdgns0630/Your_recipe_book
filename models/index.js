@@ -6,12 +6,12 @@ const CategoryTag = require('./CategoryTag');
 const UserFavourites = require('./UserFavourtites');
 
 User.hasMany(Recipe, {
-  foreignKey: 'user_id',
+  foreignKey: 'userId',
   onDelete: 'SET NULL'
 });
 
 Recipe.belongsTo(User, {
-  foreignKey: 'user_id'
+  foreignKey: 'userId'
 });
 
 Recipe.hasMany(Comment,{

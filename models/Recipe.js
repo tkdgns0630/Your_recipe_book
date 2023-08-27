@@ -30,10 +30,10 @@ Recipe.init({
     },
     userId: {
       type: DataTypes.INTEGER,
-      // references: {
-      //   model: 'user',
-      //   key: 'id',
-      // },
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
     likes: {
       type: DataTypes.DECIMAL,
