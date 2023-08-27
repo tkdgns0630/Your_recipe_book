@@ -36,13 +36,17 @@ const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
   // We find all dishes in the db and set the data equal to dishData
-  const recipeData = await Recipe.findAll({    
-  }).catch((err) => {
-    res.json(err);
-  });
-  const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-  console.log(recipes)
-  res.render('allRecipes', { recipes });
+  try {
+    const recipeData = await Recipe.findAll({    
+    })
+    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+    console.log(recipes)
+    res.render('allRecipes', { recipes,
+      logged_in: req.session.logged_in  });
+  } catch (error) {
+    res.status(500).json(err);
+  }
+  
 });
 
 router.delete('/:id', async (req, res) => {
