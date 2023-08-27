@@ -6,7 +6,7 @@ const homeRoutes = require('./home-routes.js');
 
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
-// route to get all dishes
+// route to get all recipes
 router.get('/', async (req, res) => {
   // We find all dishes in the db and set the data equal to dishData
   const recipeData = await Recipe.findAll().catch((err) => {

@@ -22,6 +22,7 @@ router.get('/profile', withAuth, async (req, res) => {
       // include: [{ model: UserFavourites }],
     });
     const user = userData.get({ plain: true });
+   
     res.render('profile', {
       ...user,
       logged_in: true,
