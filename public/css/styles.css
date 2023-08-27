@@ -46,18 +46,43 @@ body {
 .banner{
   height: 300px;
   background-image: url("../banner.jpg");
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  background-size: 100% 200%;
+  
   position: relative;
 
 }
-.banner img{
-  width:100%;
+.banner img{ 
+  object-fit:cover;  
 }
 .form-inline {
-  width: 500px;
-  /*margin:0 auto;*/
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);  
+}
+.form-control{
+  width: 100%;
+  border: 3px solid #383846;
+  
+  /* padding: 5px; */
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
   
 }
+
+.search-btn{
+  width: 40px;
+  height: 40px;
+  background:transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  
+}
+
 /* grid */
 .grid-container {
   display: grid;
