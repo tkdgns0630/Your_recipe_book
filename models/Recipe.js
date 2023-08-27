@@ -27,6 +27,9 @@ Recipe.init({
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
+      validate: {
+        isDate: true
+      }
     },
     userId: {
       type: DataTypes.INTEGER,
