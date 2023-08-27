@@ -26,7 +26,9 @@ body {
 .navbar-head a:hover {
     background-color: #949393;
   }
-
+.nav-item{
+  margin-left:20px;
+}
 /* Dropdown Content */
 /* .dropdown-content {
   display: none;
