@@ -44,7 +44,6 @@ Category.hasMany(Recipe, {
 User.hasMany(Recipe,{
   through: { 
   model: UserFavourites,
-  foreignKey: 'recipe_id',
   unique: 'false',
   onDelete: 'SET NULL',
 },
@@ -54,7 +53,6 @@ User.hasMany(Recipe,{
 Recipe.hasMany(User,{
   through: { 
   model: UserFavourites,
-  foreignKey: 'user_id',
   unique: 'false',
   onDelete: 'SET NULL',
 },
