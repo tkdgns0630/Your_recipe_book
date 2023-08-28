@@ -1,16 +1,28 @@
 const router = require('express').Router();
+const { Recipe } = require('../models');
 const apiRoutes = require('./api');
-const Project = require('../models/Project');
 
+const homeRoutes = require('./home-routes.js');
+
+router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
-// route to get all dishes
+// route to get all recipes
 router.get('/', async (req, res) => {
   // We find all dishes in the db and set the data equal to dishData
-  const projectData = await Project.findAll().catch((err) => {
+  const recipeData = await Recipe.findAll().catch((err) => {
     res.json(err);
   });
-  const projects = projectData.map((project) => project.get({ plain: true }));
-  res.render('all', { projects });
+  const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+  res.render('all', { recipes });
+});
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('login');
 });
 
 module.exports = router;

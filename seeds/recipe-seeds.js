@@ -1,6 +1,6 @@
-const { User } = require('../models');
+const { Recipe } = require('../models');
 
-const userData = [
+const recipeData = [
     {//1
     name: 'Pasta Cabonara',
     ingredients: ['Pasta', 'Eggs', 'Panchetta', 'Parmesan Cheese'],
@@ -63,6 +63,6 @@ const userData = [
         },
 ];
 
-const seedUsers = () => User.bulkcreate(userData);
+const seedRecipe = () => Recipe.bulkcreate(recipeData);
 
-module.exports = seedUsers;
+module.exports = seedRecipe;

@@ -28,7 +28,7 @@ User.init(
         isEmail: true,
       },
     },
-    isAdmin:{
+    isAdmin: {
       type: DataTypes.BOOLEAN,
       default: false,
     },
@@ -37,7 +37,7 @@ User.init(
       allowNull: false,
       validate: {
         len: [8],
-        is: /^[a-z]+$/i
+        // is: /^[a-z]+$/i
       },
     },
   },
@@ -48,7 +48,10 @@ User.init(
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
     },

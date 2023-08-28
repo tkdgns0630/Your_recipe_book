@@ -1,18 +1,78 @@
 <head>
   <meta charset="UTF-8">
   <title>Your Recipe Book</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="images/x-icon" href="icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-  <div class="navbar">
-  <h1>Your Recipe Book</h1>
+  {{!-- <div class="navbar-head">
+
+  <h1><a href="/">Your Recipe Book</a></h1>
   <a href="#">Profile</a>
   <a href="#">Contact</a>
-  <a href="#">Logout</a>
+         {{#if logged_in}}
+        <a href="/profile">Profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+    </div> --}}
+    <header>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+       <a href="/"><img src="logo1.png" height="80px" width="120px"></a>
+    <a href="#" class="navbar-brand"></a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0" id="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="#" class="nav-link">Top</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Latest</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quick</a></li>
+             <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+            {{#each categories as |category|}}
+          <a class="dropdown-item" href={{category.id}}>{{category.cat_name}}</a>
+           {{/each}}            
+          </ul>
+        </li>
+        </ul>
     </div>
-  </div>
-        {{{ body }}}
-      </main>
-  </div>
+   <div class="mx-auto my-2 order-0 order-md-1 position-relative  "> 
+    <ul class="navbar-nav">
+    <li class="nav-item"><a href="#" class="nav-link">Profile</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+    <li class="nav-item">{{#if logged_in}}
+        <a href="/profile" class="nav-link">Profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login" class="nav-link">login</a>
+        {{/if}}</li>
+</ul>
+  
+         </div>
+   
+   
+</nav> 
+
+<div class="banner">
+  {{!-- <img src="pizza.jpg" alt="background" style="width: 100%; " /> --}}
+  <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn  my-2 my-sm-0 search-btn" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+</div>
+</header>
+{{{ body }}}   
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}    
+</main>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>
