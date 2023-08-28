@@ -5,6 +5,15 @@ const Comment = require('./Comment');
 //const CategoryTag = require('./CategoryTag'); Legacy code
 const UserFavourites = require('./UserFavourtites');
 
+User.hasMany(Recipe, {
+  foreignKey: 'user_id',
+  onDelete: 'SET NULL'
+});
+
+Recipe.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+
 Recipe.hasMany(Comment,{
   foreignKey: 'comment_id',
   onDelete: 'CASCADE'
@@ -27,19 +36,29 @@ Recipe.belongsTo(Category, {
   foreignKey: 'cat_id',
 });
 
-Category.hasManyMany(Recipe, {
+Category.hasMany(Recipe, {
   foreignKey: 'cat_id',
   onDelete: 'CASCADE'
 });
 
 User.hasMany(Recipe,{
-  through: UserFavourites,
+  through: { 
+  model: UserFavourites,
   foreignKey: 'recipe_id',
+  unique: 'false',
+  onDelete: 'SET NULL',
+},
+  as: 'UserFavRecipes'
 });
 
 Recipe.hasMany(User,{
-  through: UserFavourites,
+  through: { 
+  model: UserFavourites,
   foreignKey: 'user_id',
+  unique: 'false',
+  onDelete: 'SET NULL',
+},
+  as: 'FavouredRecipes'
 });
 
 
