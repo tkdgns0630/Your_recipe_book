@@ -36,7 +36,7 @@ UserFavourites.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user_favourite',
+    modelName: 'user_favourites',
   }
 );
 

@@ -23,33 +23,43 @@ Recipe.init({
     prepTime:{
       type: DataTypes.INTEGER
     },
-    // dateCreated: {
-    //   type: DataTypes.DATE,
-    //   allowNull: false,
-    //   defaultValue: DataTypes.NOW,
-    // },
-    userId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
-    likes: {
-      type: DataTypes.DECIMAL,
+    dateCreated: {
+      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: DataTypes.NOW,
+      validate: {
+        isDate: true
+      }
     },
-    hasNuts: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
+  userId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'user',
+      key: 'id',
     },
-    vegan: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    }
+  },
+  catId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'category',
+      key: 'id',
+    },
+  },
+  likes: {
+    type: DataTypes.DECIMAL,
+    allowNull: false,
+    defaultValue: 0
+  },
+  hasNuts: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  },
+  vegan: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+  }
   },
   {
     sequelize,

@@ -10,7 +10,7 @@ Comment.init({
       primaryKey: true,
       autoIncrement: true
     },
-  recipe_id: {
+  recipeId: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
@@ -19,7 +19,7 @@ Comment.init({
         unique: false
       }
     },
-    user_id: {
+    userId: {
       type: DataTypes.INTEGER,
       references: {
         model: 'user',

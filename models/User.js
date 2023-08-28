@@ -32,14 +32,6 @@ User.init(
       type: DataTypes.BOOLEAN,
       default: false,
     },
-    favourites: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'user_favourite',
-        key: 'id',
-      },
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,

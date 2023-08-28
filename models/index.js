@@ -2,7 +2,7 @@ const User = require('./User');
 const Recipe = require('./Recipe');
 const Category = require('./Category');
 const Comment = require('./Comment');
-const CategoryTag = require('./CategoryTag');
+//const CategoryTag = require('./CategoryTag'); Legacy code
 const UserFavourites = require('./UserFavourtites');
 
 User.hasMany(Recipe, {
@@ -23,29 +23,41 @@ Comment.belongsTo(Recipe,{
   foreignKey:'comment_id'
 });
 
-Recipe.belongsToMany(Category, {
-  through: CategoryTag,
+User.hasMany(Comment,{
+  foreignKey:'user_id',
+  onDelete: 'CASCADE'
+});
+
+Comment.belongsTo(User,{
+  foreignKey:'user_id'
+});
+
+Recipe.belongsTo(Category, {
   foreignKey: 'cat_id',
-  onDelete: 'SET NULL'
 });
 
-Category.belongsToMany(Recipe, {
-  through: CategoryTag,
-  foreignKey: 'recipe_id',
-  onDelete: 'SET NULL'
+Category.hasMany(Recipe, {
+  foreignKey: 'cat_id',
+  onDelete: 'CASCADE'
 });
 
-User.belongsToMany(Recipe,{
-  through: UserFavourites,
-  foreignKey: 'recipe_id',
-  onDelete: 'SET NULL'
+User.hasMany(Recipe,{
+  through: { 
+  model: UserFavourites,
+  unique: 'false',
+  onDelete: 'SET NULL',
+},
+  as: 'UserFavRecipes'
 });
 
-Recipe.belongsToMany(User,{
-  through: UserFavourites,
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
+Recipe.hasMany(User,{
+  through: { 
+  model: UserFavourites,
+  unique: 'false',
+  onDelete: 'SET NULL',
+},
+  as: 'FavouredRecipes'
 });
 
 
-module.exports = { User, Recipe, Category, Comment, CategoryTag, UserFavourites};
+module.exports = { User, Recipe, Category, Comment, UserFavourites};
