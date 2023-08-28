@@ -7,9 +7,9 @@ const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('\n----- DATABASE SYNCED -----\n');
   await seedCategories();
-  console.log('\n----- USER SEEDED -----\n');
+  console.log('\n----- CATEGORIES SEEDED -----\n'); 
   await seedUsers();
-  console.log('\n----- CATEGORIES SEEDED -----\n');
+  console.log('\n----- USER SEEDED -----\n');
   await seedRecipie();
   console.log('\n----- RECIPIE SEEDED -----\n');
 

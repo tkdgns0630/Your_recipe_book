@@ -136,7 +136,7 @@ body {
   margin-left: 1rem;
 }
 
-@media screen and (max-width: 749px)
+@media screen and (max-width: 768px)
 {
   .banner{
     position:absolute;
