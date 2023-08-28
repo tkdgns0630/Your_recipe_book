@@ -1,27 +1,19 @@
-
-
-
+const seedCategories = require('./category-seeds');
+const seedRecipie = require('./recipe-seeds');
 const sequelize = require('../config/connection');
+const seedUsers = require('./user-seeds');
 
-const userData = require('./userData.json');
-const projectData = require('./projectData.json');
-
-const seedDatabase = async () => {
+const seedAll = async () => {
   await sequelize.sync({ force: true });
-
-  const users = await User.bulkCreate(userData, {
-    individualHooks: true,
-    returning: true,
-  });
-
-  for (const project of projectData) {
-    await Project.create({
-      ...project,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
-  }
+  console.log('\n----- DATABASE SYNCED -----\n');
+  await seedCategories();
+  console.log('\n----- CATEGORIES SEEDED -----\n'); 
+  await seedUsers();
+  console.log('\n----- USER SEEDED -----\n');
+  await seedRecipie();
+  console.log('\n----- RECIPIE SEEDED -----\n');
 
   process.exit(0);
 };
 
-seedDatabase();
+seedAll();

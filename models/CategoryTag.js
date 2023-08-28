@@ -1,3 +1,5 @@
+//This file is legacy Code and currently does nothing
+
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');

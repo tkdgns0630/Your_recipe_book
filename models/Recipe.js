@@ -31,28 +31,13 @@ Recipe.init({
         isDate: true
       }
     },
-    userId: {
+    catId: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'cat',
         key: 'id',
       },
     },
-    likes: {
-      type: DataTypes.DECIMAL,
-      allowNull: false,
-      defaultValue: 0
-    },
-    hasNuts: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
-    vegan: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    }
   },
   {
     sequelize,

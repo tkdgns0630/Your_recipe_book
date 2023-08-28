@@ -28,10 +28,10 @@ User.init(
         isEmail: true,
       },
     },
-    isAdmin:{
-      type: DataTypes.BOOLEAN,
-      default: false,
-    },
+//    isAdmin:{
+//      type: DataTypes.BOOLEAN,
+//      default: false,
+//    },
     favourites:{
       type: DataTypes.INTEGER,
       allowNull: true,
