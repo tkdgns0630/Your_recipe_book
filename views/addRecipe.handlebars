@@ -1,37 +1,70 @@
-
-<div class="row mt-4">
-  <div class="col-md-6">
+<div class='row mt-4'>
+  <div class='col-md-6'>
     <h3>Create a New Recipe:</h3>
 
-    <form class="form new-recipe-form">
-      <div class="form-group">
-        <label for="recipe-name">recipe name:</label>
-        <input class="form-input" type="text" id="recipe-name" name="recipe-name" />
+    <form class='form new-recipe-form'>
+      <div class='form-group'>
+        <label for='recipe-name'>recipe name:</label>
+        <input
+          class='form-input'
+          type='text'
+          id='recipe-name'
+          name='recipe-name'
+        />
       </div>
-      <div class="form-group">
-        <label for="recipe-ingredients">Ingredients:</label>
-        <textarea class="form-input" id="recipe-ingredients" name="recipe-ingredients"></textarea>
+      <div class='form-group'>
+        <label for='recipe-ingredients'>Ingredients:</label>
+        <textarea
+          class='form-input'
+          id='recipe-ingredients'
+          name='recipe-ingredients'
+        ></textarea>
       </div>
-      <div class="form-group">
-        <label for="recipe-desc">Method:</label>
-        <textarea class="form-input" id="recipe-desc" name="recipe-desc"></textarea>
+      <div class='form-group'>
+        <label for='recipe-desc'>Method:</label>
+        <textarea
+          class='form-input'
+          id='recipe-desc'
+          name='recipe-desc'
+        ></textarea>
       </div>
-       <div class="form-prep">
-        <label for="recipe-prep">Preparation Time:</label>
-        <textarea class="form-input" id="recipe-prep" name="recipe-prep"></textarea>
+      <div class='form-prep'>
+        <label for='recipe-prep'>Preparation Time:</label>
+        <textarea
+          class='form-input'
+          id='recipe-prep'
+          name='recipe-prep'
+        ></textarea>
       </div>
-       <div class="form-cat">
-        <label for="recipe-cat">Method:</label>
-        <textarea class="form-input" id="recipe-cat" name="recipe-cat"></textarea>
+      <div class='form-cat'>
+        <label for='recipe-cat'>Category:</label>
+        <div class='dropdown'>
+          <a
+            class='btn btn-secondary dropdown-toggle'
+            href='#'
+            role='button'
+            data-bs-toggle='dropdown'
+            aria-expanded='false'
+          >
+            Select
+          </a>
+          <ul class='dropdown-menu'>
+            {{#each categories as |category|}}
+
+              <li><a
+                  class='dropdown-item'
+                  href={{category.id}}
+                >{{category.cat_name}}</a></li>
+            {{/each}}
+
+          </ul>
+        </div>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+      
+      <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Create</button>
       </div>
     </form>
   </div>
-<a href="api/recipes">See all recipes</a>
-</br>
-<a href="api/addRecipe">Add Recipe</a>
- 
-
-<script src="./js/profile.js"></script>
+  <a href='recipes'>See all recipes</a>
+</div>

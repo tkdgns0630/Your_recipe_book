@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe,User } = require('../../models');
+const { Recipe, User,Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      console.log(userData)
+      console.log(userData);
       res.status(200).json(userData);
     });
   } catch (err) {
@@ -17,19 +17,16 @@ router.post('/', async (req, res) => {
 });
 
 router.get('/', withAuth, async (req, res) => {
-  // We find all dishes in the db and set the data equal to dishData
   try {
-    const recipeData = await Recipe.findAll({    
-    })
-    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    console.log(recipes)
-    res.render('addRecipe', { recipes,
-      logged_in: req.session.logged_in  });
+    const categoryData = await Category.findAll();
+
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
+    res.render('addRecipe', { categories, logged_in: req.session.loggedIn });
   } catch (error) {
     res.status(500).json(err);
   }
-  
 });
-
 
 module.exports = router;
