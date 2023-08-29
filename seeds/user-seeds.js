@@ -19,7 +19,7 @@ const userData = [
     //3
     name: 'James T.',
     email: 'cptkirk@starfleet.com',
-    isAdmin: false,
+    is_admin: false,
     password: 'w0sspard',
   },
   {

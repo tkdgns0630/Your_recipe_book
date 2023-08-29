@@ -3,7 +3,7 @@ const Recipe = require('./Recipe');
 const Category = require('./Category');
 const Comment = require('./Comment');
 //const CategoryTag = require('./CategoryTag'); Legacy code
-const UserFavourites = require('./UserFavourtites');
+const UserFavourites = require('./UserFavourites');
 
 User.hasMany(Recipe, {
   foreignKey: 'user_id',

@@ -28,7 +28,7 @@ User.init(
         isEmail: true,
       },
     },
-    isAdmin: {
+    is_admin: {
       type: DataTypes.BOOLEAN,
       default: false,
     },
@@ -37,7 +37,7 @@ User.init(
       allowNull: false,
       validate: {
         len: [8],
-        // is: /^[a-z]+$/i
+        //is: /^[a-z]+$/i
       },
     },
   },
