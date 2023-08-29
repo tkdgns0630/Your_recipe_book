@@ -30,11 +30,12 @@
       </div>
       <div class='form-prep'>
         <label for='recipe-prep'>Preparation Time:</label>
-        <textarea
-          class='form-input'
-          id='recipe-prep'
-          name='recipe-prep'
-        ></textarea>
+        <input type="radio" id="thirty" name="prep-time" value="30">
+        <label for='thirty'>30</label>
+          <input type="radio" id="fourty-five" name="prep-time" value="45">
+        <label for='fourty-five'>45</label>
+          <input type="radio" id="sixty" name="prep-time" value="60">
+        <label for='sixty'>60</label>       
       </div>
       <div class='form-cat'>
         <label for='recipe-cat'>Category:</label>
@@ -60,7 +61,22 @@
           </ul>
         </div>
       </div>
-      
+       <div class='form-nuts'>
+        <label for='recipe-nuts'>Contain Nuts</label>
+        <input type="radio" id="Yes" name="nuts" value="yes">
+        <label for='yes'>Yes</label>
+          <input type="radio" id="No" name="nuts" value="No">
+        <label for='No'>No</label>
+              
+      </div>
+        <div class='form-vegan'>
+        <label for='recipe-vegan'>Contain Nuts</label>
+        <input type="radio" id="Yes" name="vegan" value="yes">
+        <label for='yes'>Yes</label>
+          <input type="radio" id="No" name="vegan" value="No">
+        <label for='No'>No</label>
+              
+      </div>
       <div class='form-group'>
         <button type='submit' class='btn btn-primary'>Create</button>
       </div>
