@@ -1,10 +1,38 @@
 <div class='grid-container'>
-  
   {{#each recipes as |recipe|}}
-    <div class='recipe-content'>
-      {{!-- <img src={{recipe.image_url}} alt={{recipe.name}} /> --}}
-      <img src="/images.png" alt= />
-      <p>{{recipe.name}}</p>
+    <div class='box'>
+      <img src='images.png' />
+      <ul>
+        <li> <strong>name:</strong> {{recipe.name}}</li>
+<!--         <li>
+          <strong>ingredients:</strong>
+          {{recipe.ingredients}}
+        </li>
+        <li>
+          <strong>recipe:</strong>
+          {{recipe.method}}
+        </li>
+        <li>
+          <strong>prep time:</strong>
+          {{recipe.prepTime}}
+        </li>
+        <li>
+          <strong>date created:</strong>
+          {{recipe.dateCreated}}
+        </li>
+        <li>
+          <strong>likes :</strong>
+          {{recipe.likes}}
+        </li>
+        <li>
+          <strong>has nuts:</strong>
+          {{recipe.has_nuts}}
+        </li>
+        <li>
+          <strong>vegan:</strong>
+          {{recipe.vegan}}
+        </li> -->
+      </ul>
     </div>
   {{/each}}
 </div>
