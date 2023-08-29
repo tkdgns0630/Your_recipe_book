@@ -3,7 +3,8 @@ const sequelize = require('../config/connection');
 
 class Recipe extends Model {}
 
-Recipe.init({
+Recipe.init(
+  {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -20,46 +21,46 @@ Recipe.init({
     method: {
       type: DataTypes.STRING(1234),
     },
-    prepTime:{
-      type: DataTypes.INTEGER
+    prep_time: {
+      type: DataTypes.INTEGER,
     },
-    dateCreated: {
+    date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
       validate: {
-        isDate: true
-      }
+        isDate: true,
+      },
     },
-  userId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'user',
-      key: 'id',
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
-  },
-  catId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: 'category',
-      key: 'id',
+    cat_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key: 'id',
+      },
     },
-  },
-  likes: {
-    type: DataTypes.DECIMAL,
-    allowNull: false,
-    defaultValue: 0
-  },
-  hasNuts: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-  },
-  vegan: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-    defaultValue: false,
-  }
+    likes: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      defaultValue: 0,
+    },
+    has_nuts: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    vegan: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   },
   {
     sequelize,

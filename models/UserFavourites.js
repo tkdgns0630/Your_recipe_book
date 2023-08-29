@@ -10,26 +10,26 @@ UserFavourites.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
     },
-    recipeId: {
+    recipe_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'recipe',
         key: 'id',
-        unique: false
-      }
+        unique: false,
+      },
     },
-    userId: {
+    user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'user',
         key: 'id',
-        unique: false
-      }
-    }
+        unique: false,
+      },
+    },
   },
   {
     sequelize,
