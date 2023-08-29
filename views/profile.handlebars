@@ -8,6 +8,35 @@
 <a href="api/recipes">See all recipes</a>
 </br>
 <a href="api/addRecipe">Add Recipe</a>
- 
+
+{{#if name}}
+ <p>dog</p>
+{{/if}}
+
+
+{{#if id}}
+  <div class="col-md-6 project-list">
+    <h3>All Recipes:</h3>
+
+    {{#each UserFavRecipes}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <img
+        src='/images/{{recipe.filename}}'
+        class='rounded py-9 px-9 d-flex align-content-center'
+        height='130px'
+        width='216px'
+        alt='{{recipe.name}}'
+      />
+        <a href="https://www.google.com.au/">annoying orange{{this.name}}</a>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{recipe.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+
 
 <script src="./js/profile.js"></script>
