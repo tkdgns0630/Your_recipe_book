@@ -59,6 +59,9 @@ Recipe.init({
     type: DataTypes.BOOLEAN,
     allowNull: false,
     defaultValue: false,
+  },
+  photo:{
+    type: DataTypes.BLOB("long"),
   }
   },
   {
