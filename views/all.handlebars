@@ -1,7 +1,13 @@
 <div class='grid-container'>
   {{#each recipes as |recipe|}}
     <div class='box'>
-      <img src='/images/{{recipe.filename}}' alt='{{recipe.name}}' />
+      <img
+        src='/images/{{recipe.filename}}'
+        class='rounded py-9 px-9 d-flex align-content-center'
+        height='130px'
+        width='216px'
+        alt='{{recipe.name}}'
+      />
       <ul>
         <li> <strong>name:</strong> {{recipe.name}}</li>
         <!--         <li>
