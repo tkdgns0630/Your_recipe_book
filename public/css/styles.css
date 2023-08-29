@@ -46,17 +46,14 @@ body {
   flex-direction: column;
 } */
 .banner{
-  height: 300px;
-  background-image: url("../banner.jpg");
-  background-position: center;
-  /* background-repeat: no-repeat; */
-  background-size: 100% 200%;
-  
+  height: 50%;
   position: relative;
 
 }
 .banner img{ 
-  object-fit:cover;  
+  object-fit:cover; 
+  width: 100%; 
+  height:100%;
 }
 .form-inline {
   position: absolute;
@@ -136,9 +133,3 @@ body {
   margin-left: 1rem;
 }
 
-@media screen and (max-width: 768px)
-{
-  .banner{
-    position:absolute;
-     /* height:100%; */
-  }}
