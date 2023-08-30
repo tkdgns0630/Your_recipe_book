@@ -1,14 +1,23 @@
+<div class="align-grid">
+
 <div class='grid-container'>
 
   {{#each recipePK.recipes as |recipe|}}
-    <div class='box'>
+    <div class='recipe-content'>
+       <img
+        src='/images/{{recipe.filename}}'
+        class='rounded py-9 px-9 d-flex align-content-center'
+        height='130px'
+        width='216px'
+        alt='{{recipe.name}}'
+      />
       Recipe Name:
       {{recipe.name}}
     </div>
   {{/each}}
 
   {{#each recipes as |recipe|}}
-    <div class='box'>
+    <div class='recipe-content'>
       <img
         src='/images/{{recipe.filename}}'
         class='rounded py-9 px-9 d-flex align-content-center'
@@ -49,4 +58,5 @@
       </ul>
     </div>
   {{/each}}
+</div>
 </div>
