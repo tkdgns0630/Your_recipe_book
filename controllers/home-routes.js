@@ -17,13 +17,17 @@ router.get('/', async (req, res) => {
 //  get Recipe by Category id
 router.get('/:id', async (req, res) => {
   try {
+    const categoryData = await Category.findAll();
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
     const recipePktData = await Category.findByPk(req.params.id, {
       include: [{ model: Recipe }],
     });
     const recipePK = recipePktData.get({ plain: true });
     // res.json(recipePK);
     // console.log(recipePK);
-    res.render('all', { recipePK });
+    res.render('all', { recipePK, categories });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -40,7 +44,6 @@ router.get('/profile', withAuth, async (req, res) => {
       ],
     });
     const user = userData.get({ plain: true });
-
 
     res.render('profile', {
       ...user,
