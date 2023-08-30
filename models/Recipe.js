@@ -21,7 +21,8 @@ Recipe.init({
       type: DataTypes.STRING(1234),
     },
     prepTime:{
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
     dateCreated: {
       type: DataTypes.DATE,
@@ -32,7 +33,7 @@ Recipe.init({
       }
     },
   userId: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.INTEGER,    
     references: {
       model: 'user',
       key: 'id',
@@ -60,9 +61,9 @@ Recipe.init({
     allowNull: false,
     defaultValue: false,
   },
-  photo:{
-    type: DataTypes.BLOB("long"),
-  }
+  // photo:{
+  //   type: DataTypes.BLOB("long"),
+  // }
   },
   {
     sequelize,

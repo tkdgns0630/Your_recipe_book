@@ -135,7 +135,9 @@ body {
   gap: 1rem;
   margin-left: 1rem;
 }
-
+.new-recipe-form .form-group{
+  margin:10px;
+}
 @media screen and (max-width: 768px)
 {
   .banner{
