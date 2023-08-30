@@ -8,8 +8,11 @@
 <a href="api/recipes">See all recipes</a>
 </br>
 <a href="api/addRecipe">Add Recipe</a>
+  </div>
+  
+  <div class="row">
+  {{#if UserFavRecipes}}
 
-{{#if id}}
   <div class="col-md-6 project-list">
     <h3>Favourite recipes:</h3>
 
@@ -17,21 +20,49 @@
     <div class="row mb-2">
       <div class="col-md-8">
         <img
-        src='/images/{{recipe.filename}}'
+        src='/images/{{this.filename}}'
         class='rounded py-9 px-9 d-flex align-content-center'
         height='130px'
         width='216px'
-        alt='{{recipe.name}}'
+        alt='{{this.filename}}'
       />
         <a href="https://www.google.com.au/">{{this.name}}</a>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{recipe.id}}">DELETE</button>
+        <button class="delBut btn btn-sm btn-danger" user-id="{{id}}">DELETE</button>
       </div>
     </div>
     {{/each}}
-  </div>
+
+      </div>
   {{/if}}
+
+  <div class="col-md-6 project-list">
+    <h3>User recipes:</h3>
+    {{#each recipes}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <img
+        src='/images/{{this.filename}}'
+        class='rounded py-9 px-9 d-flex align-content-center'
+        height='130px'
+        width='216px'
+        alt='{{this.filename}}'
+      />
+        <a href="https://www.google.com.au/">{{this.name}}</a>
+      </div>
+      <div class="col-md-4">
+        <button class="delBut btn btn-sm btn-danger del-per" user-id1="{{id}}">DELETE</button>
+      </div>
+    </div>
+
+   
+    {{/each}}
+
+  </div>
+
+  </div>
+
 
 
 <script src="./js/profile.js"></script>

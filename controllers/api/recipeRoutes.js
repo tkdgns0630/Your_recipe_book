@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe } = require('../../models');
+const { Recipe, UserFavourites } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // router.post('/', async (req, res) => {
@@ -18,7 +18,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const recipeData = await Recipe.findAll({
-      // where: {        
+      // where: {
       //   userId: req.session.user_id,
       // },
     });
@@ -37,23 +37,20 @@ router.get('/', async (req, res) => {
 router.get('/', withAuth, async (req, res) => {
   // We find all dishes in the db and set the data equal to dishData
   try {
-    const recipeData = await Recipe.findAll({    
-    })
+    const recipeData = await Recipe.findAll({});
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    console.log(recipes)
-    res.render('allRecipes', { recipes,
-      logged_in: req.session.logged_in  });
+    console.log(recipes);
+    res.render('allRecipes', { recipes, logged_in: req.session.logged_in });
   } catch (error) {
     res.status(500).json(err);
   }
-  
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id1', async (req, res) => {
   try {
     const recipeData = await Recipe.destroy({
       where: {
-        id: req.params.id,
+        id: req.params.id1,
         user_id: req.session.user_id,
       },
     });
