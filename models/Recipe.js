@@ -32,6 +32,10 @@ Recipe.init(
         isDate: true,
       },
     },
+    filename: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
