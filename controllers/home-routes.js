@@ -14,6 +14,21 @@ router.get('/', async (req, res) => {
   res.render('all', { recipes, categories, logged_in: loggedIn });
 });
 
+//  get Recipe by Category id
+router.get('/:id', async (req, res) => {
+  try {
+    const recipePktData = await Category.findByPk(req.params.id, {
+      include: [{ model: Recipe }],
+    });
+    const recipePK = recipePktData.get({ plain: true });
+    // res.json(recipePK);
+    // console.log(recipePK);
+    res.render('all', { recipePK });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
@@ -25,7 +40,7 @@ router.get('/profile', withAuth, async (req, res) => {
       ],
     });
     const user = userData.get({ plain: true });
-    console.log(user);
+
 
     res.render('profile', {
       ...user,

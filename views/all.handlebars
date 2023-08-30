@@ -1,4 +1,12 @@
 <div class='grid-container'>
+
+  {{#each recipePK.recipes as |recipe|}}
+    <div class='box'>
+      Recipe Name:
+      {{recipe.name}}
+    </div>
+  {{/each}}
+
   {{#each recipes as |recipe|}}
     <div class='box'>
       <img
