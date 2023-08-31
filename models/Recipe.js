@@ -32,7 +32,7 @@ Recipe.init(
       validate: {
         isDate: true,
       },
-    },  
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -61,10 +61,10 @@ Recipe.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
-    },   
-  photo:{
-    type: DataTypes.BLOB("long"),
-  }
+    },
+    photo:{
+      type: DataTypes.BLOB('long'),
+    }
   },
   {
     sequelize,
