@@ -71,7 +71,7 @@ const recipeData = [
     date_created: '2023-01-23',
     photo: 'curry-meat.jpg',
     user_id: 2,
-    cat_id: 2,
+    cat_id: 3,
     likes: 5,
     has_nuts: false,
     vegan: false,
