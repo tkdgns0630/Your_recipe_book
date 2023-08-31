@@ -1,22 +1,20 @@
 const router = require('express').Router();
-const { Recipe, User,Category } = require('../../models');
+const { Recipe, User, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 const upload = require('../../utils/upload');
-const fs = require('fs');
 
-router.post('/',upload.single('file'),withAuth, async (req, res) => {
+router.post('/', upload.single('file'), withAuth, async (req, res) => {
   try {
     console.log(req.file.filename);
     console.log(req.body);
 
     const recipeData = await Recipe.create({
       ...req.body,
-      photo:req.file.filename,
-      user_id: req.session.user_id
+      photo: req.file.filename,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(recipeData);
-
   } catch (err) {
     res.status(500).json(err);
   }
@@ -25,7 +23,7 @@ router.post('/',upload.single('file'),withAuth, async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     if (req.session.logged_in) {
-    // Find the logged in user based on the session ID
+      // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
         include: [{ model: Recipe }],
@@ -38,7 +36,10 @@ router.get('/', async (req, res) => {
         category.get({ plain: true })
       );
 
-      res.render('addRecipe', {user,categories,logged_in: req.session.logged_in,
+      res.render('addRecipe', {
+        user,
+        categories,
+        logged_in: req.session.logged_in,
       });
       return;
     }
@@ -55,6 +56,5 @@ router.get('/', async (req, res) => {
 //     res.status(500).json(err);
 //   }
 // });
-
 
 module.exports = router;
