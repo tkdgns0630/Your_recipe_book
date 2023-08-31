@@ -8,18 +8,33 @@ const newFormHandler = async (event) => {
   const prepTime = document.querySelector('input[name="prep-time"]:checked').value;
   const hasNuts = document.querySelector('#nuts:checked')!==null;
   const vegan = document.querySelector('#vegan:checked')!==null;
+  const photo = document.querySelector('#input-files').files[0];
+
+  const formData = new FormData();
+  //formData.append("params",JSON.stringify({ name, ingredients, method,catId,prepTime,hasNuts,vegan }));
+  
+  formData.append("name",name);
+  formData.append("ingredients",ingredients);
+  formData.append("method",method);
+  formData.append("prepTime",prepTime);
+  formData.append("catId",catId);
+  formData.append("vegan",vegan);
+  formData.append("hasNuts",hasNuts);
+  formData.append("file",photo)
+
   if (name && ingredients && method && prepTime && catId ) {
-    const response = await fetch(`/api/addRecipe`, {
+    const response = await fetch(`/api/add-recipe`, {
       method: 'POST',
-      body: JSON.stringify({ name, ingredients, method,catId,prepTime,hasNuts,vegan }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      body: formData,
+      // headers: {
+      //   'Content-Type': 'multipart/form-data';
+      //   boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW,
+      // },
     });
 
     if (response.ok) {
       console.log(response);
-      document.location.replace('/api/addRecipe');
+      document.location.replace('/api/add-recipe');
 
     } else {
       alert('Failed to create recipe');

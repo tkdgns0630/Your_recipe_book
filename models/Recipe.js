@@ -61,9 +61,9 @@ Recipe.init({
     allowNull: false,
     defaultValue: false,
   },
-  // photo:{
-  //   type: DataTypes.BLOB("long"),
-  // }
+  photo:{
+    type: DataTypes.BLOB("long"),
+  }
   },
   {
     sequelize,

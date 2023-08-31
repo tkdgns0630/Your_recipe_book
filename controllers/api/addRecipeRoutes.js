@@ -2,38 +2,41 @@ const router = require('express').Router();
 const { Recipe, User,Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 const upload = require("../../utils/upload");
-const path = require("path");
-
+const fs = require("fs");
 
 // const multer  = require('multer')
 // const upload = multer({ dest: 'uploads/' })
-
-// router.post('/',withAuth, async (req, res) => {
+// router.post('/',upload.single("file"), async (req, res) => {
 //   try {
-//     const recipeData = await Recipe.create({ 
-//       ...req.body,
-//       user_id: req.session.user_id
-//     });    
-   
-//       res.status(200).json(recipeData);
+//     console.log(JSON.stringify(req.file));
+//     if (req.file) {
+//       res.send("Single file uploaded successfully");
+//     } else {
+//       res.status(400).send("Please upload a valid image");
+//     }
     
 //   } catch (err) {
 //     res.status(500).json(err);
 //   }
 // });
-router.post('/',upload.single("file"), async (req, res) => {
+router.post('/',upload.single("file"),withAuth, async (req, res) => {
   try {
-    console.log(JSON.stringify(req.file));
-    if (req.file) {
-      res.send("Single file uploaded successfully");
-    } else {
-      res.status(400).send("Please upload a valid image");
-    }
+    console.log(req.file)
+    console.log(req.body)
+
+    const recipeData = await Recipe.create({ 
+      ...req.body,
+      photo:req.file.path,
+      user_id: req.session.user_id
+    });    
+   
+      res.status(200).json(recipeData);
     
   } catch (err) {
     res.status(500).json(err);
   }
 });
+
 router.get('/', async (req, res) => {
   try {
     if (req.session.logged_in) {
