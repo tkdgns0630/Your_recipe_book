@@ -72,7 +72,8 @@ li {
   gap: 2rem;
 }
 
-.recipe-content, .login-content {
+.recipe-content,
+.login-content {
   grid-column: span 2;
   gap: 1rem;
   margin: 1rem;
@@ -89,4 +90,8 @@ li {
 
 /* media queries */
 @media screen and (min-width: 768px) {
-  .recipe-content, .login-content {
+  .recipe-content,
+  .login-content {
+    grid-column: span 1;
+  }
+}

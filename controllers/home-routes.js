@@ -19,10 +19,8 @@ router.get('/profile', withAuth, async (req, res) => {
       // include: [{ model: UserFavourites }],
     });
     const user = userData.get({ plain: true });
-   
-    res.render('profile', {user,
-      logged_in: true,
-    });
+
+    res.render('profile', { user, logged_in: true });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -60,37 +58,15 @@ router.get('/', async (req, res) => {
   res.render('all', { recipes, categories, logged_in: loggedIn });
 });
 
-//  get Recipe by Category id
+// get Recipe by Category id
 router.get('/:id', async (req, res) => {
   try {
-
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [
-        { model: Recipe },
-        {
-          model: Recipe,
-          through: UserFavourites,
-          as: 'UserFavRecipes',
-        },
-      ],
-    });
-    console.log(userData);
-    const user = userData.get({ plain: true });
-    console.log(user);
-
-    res.render('profile', {
-      ...user,
-      logged_in: true,
-
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
     );
     const recipePktData = await Category.findByPk(req.params.id, {
       include: [{ model: Recipe }],
-
     });
     const recipePK = recipePktData.get({ plain: true });
     // res.json(recipePK);
@@ -100,5 +76,45 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//get Recipe by User id
+//router.get('/:id', async (req, res) => {
+//  try {
+//    // Find the logged in user based on the session ID
+//    const userData = await User.findByPk(req.session.user_id, {
+//      attributes: { exclude: ['password'] },
+//      include: [
+//        { model: Recipe },
+//        {
+//          model: Recipe,
+//          through: UserFavourites,
+//          as: 'UserFavRecipes',
+//        },
+//      ],
+//    });
+//    console.log(userData);
+//    const user = userData.get({ plain: true });
+//    console.log(user);
+//
+//    res.render('profile', {
+//      ...user,
+//      logged_in: true,
+//    });
+//
+//    const categoryData = await Category.findAll();
+//    const categories = categoryData.map((category) =>
+//      category.get({ plain: true })
+//    );
+//    const recipePktData = await Category.findByPk(req.params.id, {
+//      include: [{ model: Recipe }],
+//    });
+//    const recipePK = recipePktData.get({ plain: true });
+//    // res.json(recipePK);
+//    // console.log(recipePK);
+//    res.render('all', { recipePK, categories });
+//  } catch (err) {
+//    res.status(500).json(err);
+//  }
+//});
 
 module.exports = router;
