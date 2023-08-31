@@ -36,7 +36,9 @@ li {
   border-radius: 5px;
   outline: none;
 }
-
+.add-recipe h3{
+  margin-left: 2rem;
+}
 .form {
   margin-left: 2rem;
 }

@@ -23,11 +23,7 @@ const newFormHandler = async (event) => {
   if (name && ingredients && method && prep_time && cat_id ) {
     const response = await fetch(`/api/add-recipe`, {
       method: 'POST',
-      body: formData,
-      // headers: {
-      //   'Content-Type': 'multipart/form-data';
-      //   boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW,
-      // },
+      body: formData,     
     });
 
     if (response.ok) {

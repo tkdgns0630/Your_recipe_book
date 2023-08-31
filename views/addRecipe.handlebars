@@ -1,5 +1,5 @@
 <div class='row mt-4'>
-  <div class='col-md-6'>
+  <div class='col-md-6 add-recipe'>
     <h3>Create a New Recipe:</h3>
 
     <form class='form new-recipe-form' enctype='multipart/form-data'>
@@ -55,13 +55,7 @@
       <div class='form-group'>
         <label for='vegan'>Vegan</label>
         <input type='checkbox' name='vegan' id='vegan' value='yes' />
-      </div>
-      {{!-- <form
-      class='mt-4 image-upload'
-      action='add-recipe'
-      method='POST'
-      enctype='multipart/form-data'
-    > --}}
+      </div>      
       <div class='form-group'>
         <input
           type='file'
@@ -69,9 +63,7 @@
           id='input-files'
           class='form-control-file border'
         />
-      </div>
-      {{!-- <button type='submit' class='btn btn-primary'>Upload</button> --}}
-    {{!-- </form> --}}
+      </div>    
       <div class='form-group'>
         <button
           type='submit'
@@ -81,9 +73,9 @@
         >Create</button>
       </div>
     </form>
- 
-
+     <a href='/profile'>See all recipes</a>
   </div>
-  <a href='/profile'>See all recipes</a>
+  
 </div>
+
 <script src='/js/addRecipe.js'></script>

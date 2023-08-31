@@ -4,7 +4,7 @@ const withAuth = require('../../utils/auth');
 const upload = require("../../utils/upload");
 const fs = require("fs");
 
-router.post('/',upload.single("file"),withAuth, async (req, res) => {
+router.post('/',[withAuth,upload.single("file")], async (req, res) => {
   try {
     console.log(req.file.filename)
     console.log(req.body)
