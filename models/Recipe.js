@@ -21,8 +21,9 @@ Recipe.init(
     method: {
       type: DataTypes.STRING(1234),
     },
-    prep_time: {
+    prep_time:{
       type: DataTypes.INTEGER,
+      allowNull: false,
     },
     date_created: {
       type: DataTypes.DATE,
@@ -31,11 +32,7 @@ Recipe.init(
       validate: {
         isDate: true,
       },
-    },
-    filename: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    },  
     user_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -64,7 +61,10 @@ Recipe.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
-    },
+    },   
+  photo:{
+    type: DataTypes.BLOB("long"),
+  }
   },
   {
     sequelize,

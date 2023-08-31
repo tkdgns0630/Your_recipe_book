@@ -1,47 +1,51 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  // const name = document.querySelector('#project-name').value.trim();
-  // const needed_funding = document.querySelector('#project-funding').value.trim();
-  // const description = document.querySelector('#project-desc').value.trim();
+  const name = document.querySelector('#recipe-name').value.trim();
+  const ingredients = document.querySelector('#recipe-ingredients').value.trim();
+  const method = document.querySelector('#recipe-desc').value.trim();
+  const cat_id = document.querySelector('#recipe-cat').selectedIndex;
+  const prep_time = document.querySelector('input[name="prep-time"]:checked').value;
+  const has_nuts = document.querySelector('#nuts:checked')!==null;
+  const vegan = document.querySelector('#vegan:checked')!==null;
+  const photo = document.querySelector('#input-files').files[0];
 
-//   if (name && needed_funding && description) {
-//     const response = await fetch(`/api/projects`, {
-//       method: 'POST',
-//       body: JSON.stringify({ name, needed_funding, description }),
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
+  const formData = new FormData();  
+  formData.append("name",name);
+  formData.append("ingredients",ingredients);
+  formData.append("method",method);
+  formData.append("prep_time",prep_time);
+  formData.append("cat_id",cat_id);
+  formData.append("vegan",vegan);
+  formData.append("has_nuts",has_nuts);
+  formData.append("file",photo)
 
-//     if (response.ok) {
-//       document.location.replace('/profile');
-//     } else {
-//       alert('Failed to create project');
-//     }
-//   }
-};
-
-const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/projects/${id}`, {
-      method: 'DELETE',
+  if (name && ingredients && method && prep_time && cat_id ) {
+    const response = await fetch(`/api/add-recipe`, {
+      method: 'POST',
+      body: formData,
+      // headers: {
+      //   'Content-Type': 'multipart/form-data';
+      //   boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW,
+      // },
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      console.log(response);
+      document.location.replace('/api/add-recipe');
+
     } else {
-      alert('Failed to delete project');
+      alert('Failed to create recipe');
     }
   }
 };
+// $('#myModal').on('shown.bs.modal', function () {
+//   $('#myInput').trigger('focus')
+// })
 
-// document
-//   .querySelector('.new-project-form')
-//   .addEventListener('submit', newFormHandler);
+document
+  .querySelector('.new-recipe-form')
+  .addEventListener('submit', newFormHandler);
 
-// document
-//   .querySelector('.project-list')
-//   .addEventListener('click', delButtonHandler);
+
+
