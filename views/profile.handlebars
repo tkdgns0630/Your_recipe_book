@@ -4,10 +4,24 @@
   </div>
 </div>
 </div>
+ {{#if user.recipes.length}}
+  <div class="col-md-6 project-list">
+    <h3>All Recipes:</h3>
+    {{#each user.recipes as |recipe|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
+        <img src="/assets/uploads/{{recipe.photo}}" alt={{recipe.photo}}>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{recipe.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
 
-<a href="api/recipes">See all recipes</a>
-</br>
-<a href="api/addRecipe">Add Recipe</a>
+
 
 {{#if id}}
   <div class="col-md-6 project-list">
@@ -17,7 +31,7 @@
     <div class="row mb-2">
       <div class="col-md-8">
         <img
-        src='/images/{{recipe.filename}}'
+        src='/assets/uploads/{{recipe.photo}}'
         class='rounded py-9 px-9 d-flex align-content-center'
         height='130px'
         width='216px'
@@ -34,4 +48,7 @@
   {{/if}}
 
 
-<script src="./js/profile.js"></script>
+<a href="api/add-recipe">Add Recipe</a>
+ 
+</div>
+<script src="/js/profile.js"></script>
