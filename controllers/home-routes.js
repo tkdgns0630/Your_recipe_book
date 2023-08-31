@@ -1,6 +1,36 @@
 const router = require('express').Router();
-const { Category, Recipe, User } = require('../models');
+const { Category, Recipe, User, UserFavourites } = require('../models');
 const withAuth = require('../utils/auth');
+
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+  res.render('login');
+});
+
+// Use withAuth middleware to prevent access to route
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [
+        { model: Recipe, through: UserFavourites, as: 'UserFavRecipes' },
+      ],
+    });
+    const user = userData.get({ plain: true });
+
+    res.render('profile', {
+      ...user,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // route to get all categories and recipies
 router.get('/', async (req, res) => {
@@ -14,30 +44,23 @@ router.get('/', async (req, res) => {
   res.render('all', { recipes, categories, logged_in: loggedIn });
 });
 
-// Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+//  get Recipe by Category id
+router.get('/:id', async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
+    const categoryData = await Category.findAll();
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
+    const recipePktData = await Category.findByPk(req.params.id, {
       include: [{ model: Recipe }],
-      // include: [{ model: UserFavourites }],
     });
-    const user = userData.get({ plain: true });
-   
-    res.render('profile', {user,
-      logged_in: true,
-    });
+    const recipePK = recipePktData.get({ plain: true });
+    // res.json(recipePK);
+    // console.log(recipePK);
+    res.render('all', { recipePK, categories });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
-  res.render('login');
-});
+
 module.exports = router;

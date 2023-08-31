@@ -46,17 +46,14 @@ body {
   flex-direction: column;
 } */
 .banner{
-  height: 300px;
-  background-image: url("../banner.jpg");
-  background-position: center;
-  /* background-repeat: no-repeat; */
-  background-size: 100% 200%;
-  
+  height: 50%;
   position: relative;
 
 }
 .banner img{ 
-  object-fit:cover;  
+  object-fit:cover; 
+  width: 100%; 
+  height:100%;
 }
 .form-inline {
   position: absolute;
@@ -91,16 +88,20 @@ body {
   grid-template-columns: repeat(4, 1fr); /* Change to grid-template-columns */
   grid-auto-rows: minmax(100px, auto); 
   border: 3px solid lightslategray;
+  gap: 2rem;
   min-height: 100vh;
 }
-/* .box {
+li {
+  text-align: left;
+}
+ .box {
   grid-column: span 4;
   display: flex;
   align-items: center;
   text-align: center;
   gap: 1rem;
   margin-left: 1rem;
-}
+} 
 .gridbtns {
   grid-row: 1;
   grid-column: span 4;
@@ -135,12 +136,4 @@ body {
   gap: 1rem;
   margin-left: 1rem;
 }
-.new-recipe-form .form-group{
-  margin:10px;
-}
-@media screen and (max-width: 768px)
-{
-  .banner{
-    position:absolute;
-     /* height:100%; */
-  }}
+

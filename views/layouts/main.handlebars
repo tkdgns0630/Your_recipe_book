@@ -2,7 +2,7 @@
   <head>
     <meta charset='UTF-8' />
     <title>Your Recipe Book</title>
-    <link rel='icon' type='images/x-icon' href='/icon.png' />
+    <link rel='icon' type='images/x-icon' href='/images/icon.png' />
     <link
       rel='stylesheet'
       href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
@@ -18,7 +18,11 @@
   <body>
     <header>
       <nav class='navbar navbar-dark bg-dark navbar-expand-md'>
-        <a href='/'><img src='/logo1.png' height='80px' width='120px' /></a>
+        <a href='/'><img
+            src='/images/logo1.png'
+            height='80px'
+            width='120px'
+          /></a>
         <a href='#' class='navbar-brand'></a>
         <button
           class='navbar-toggler'
@@ -59,17 +63,17 @@
         <div class='mx-auto my-2 order-0 order-md-1 position-relative'>
           <ul class='navbar-nav'>
             <li class='nav-item'><a href='#' class='nav-link'>Contact</a></li>
-            <li class='nav-item'>
-              {{#if logged_in}}
+            <li class='nav-item'>{{#if logged_in}}
                 <a href='/profile' class='nav-link'>Profile</a>
-                <button class='no-button' id='logout'>logout</button>
+                <a href='/' class='nav-link' id='logout'>logout</a>
               {{else}}
-                <a href='/login' class='nav-link'>login/Signup</a>
+                <a href='/login' class='nav-link'>signup</a>
               {{/if}}</li>
           </ul>
         </div>
       </nav>
       <div class='banner'>
+        <img src='/images/banner.jpg' alt='yummy pizza' />
         <form class='form-inline my-2 my-lg-0'>
           <input
             class='form-control mr-sm-2'
@@ -83,17 +87,10 @@
         </form>
       </div>
     </header>
-    <main>
-      <div class='grid-container'>
-        {{{body}}}
-        {{#if logged_in}}
-          <script src='/js/logout.js'></script>
-        {{/if}}
-      </div>
-    </main>
-    <footer>
-
-    </footer>
+    {{{body}}}
+    {{#if logged_in}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
     <script
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js'
       integrity='sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm'

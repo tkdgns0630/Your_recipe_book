@@ -1,28 +1,56 @@
-const { UserFavourites, Recipe } = require('../models');
+const { UserFavourites, Recipe, User } = require('../models');
 
 const userFavData = [
   {
     user_id: 1,
-    recipe_id: [1,3,5]
+    recipe_id: 2,
+  },
+  {
+    user_id: 1,
+    recipe_id: 4,
+  },
+  {
+    user_id: 1,
+    recipe_id: 5,
   },
   {
     user_id: 2,
-    recipe_id: [2,4,5]
+    recipe_id: 1,
+  },
+  {
+    user_id: 2,
+    recipe_id: 3,
+  },
+  {
+    user_id: 2,
+    recipe_id: 5,
   },
   {
     user_id: 3,
-    recipe_id: [4,5]
+    recipe_id: 2,
+  },
+  {
+    user_id: 3,
+    recipe_id: 4,
   },
   {
     user_id: 4,
-    recipe_id: [1,2,3]
+    recipe_id: 3,
+  },
+  {
+    user_id: 4,
+    recipe_id: 5,
   },
   {
     user_id: 5,
-    recipe_id: [3,4]
+    recipe_id: 1,
+  },
+  {
+    user_id: 5,
+    recipe_id: 4,
   },
 ];
 
-const seedUserFavourite = () => UserFavourites.bulkCreate(userFavData);
+const seedUserFavourites = () => UserFavourites.bulkCreate(userFavData);
 
-module.exports = seedUserFavourite;
+module.exports = seedUserFavourites;
