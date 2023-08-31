@@ -10,9 +10,7 @@ const newFormHandler = async (event) => {
   const vegan = document.querySelector('#vegan:checked')!==null;
   const photo = document.querySelector('#input-files').files[0];
 
-  const formData = new FormData();
-  //formData.append("params",JSON.stringify({ name, ingredients, method,catId,prepTime,hasNuts,vegan }));
-  
+  const formData = new FormData();  
   formData.append("name",name);
   formData.append("ingredients",ingredients);
   formData.append("method",method);

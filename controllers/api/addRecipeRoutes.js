@@ -4,29 +4,14 @@ const withAuth = require('../../utils/auth');
 const upload = require("../../utils/upload");
 const fs = require("fs");
 
-// const multer  = require('multer')
-// const upload = multer({ dest: 'uploads/' })
-// router.post('/',upload.single("file"), async (req, res) => {
-//   try {
-//     console.log(JSON.stringify(req.file));
-//     if (req.file) {
-//       res.send("Single file uploaded successfully");
-//     } else {
-//       res.status(400).send("Please upload a valid image");
-//     }
-    
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 router.post('/',upload.single("file"),withAuth, async (req, res) => {
   try {
-    console.log(req.file)
+    console.log(req.file.filename)
     console.log(req.body)
 
     const recipeData = await Recipe.create({ 
       ...req.body,
-      photo:req.file.path,
+      photo:req.file.filename,
       user_id: req.session.user_id
     });    
    

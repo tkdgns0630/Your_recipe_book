@@ -9,7 +9,8 @@
     {{#each user.recipes as |recipe|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}{{recipe.photo}}</a></h4>
+        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
+        <img src="/assets/uploads/{{recipe.photo}}" alt={{recipe.name}}>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{recipe.id}}">DELETE</button>
