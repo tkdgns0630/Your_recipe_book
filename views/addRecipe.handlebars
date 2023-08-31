@@ -1,34 +1,89 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-  </div>
-</div>
-</div>
-<div class="row mt-4">
-  <div class="col-md-6">
+<div class='row mt-4'>
+  <div class='col-md-6'>
     <h3>Create a New Recipe:</h3>
 
-    <form class="form new-recipe-form">
-      <div class="form-group">
-        <label for="recipe-name">recipe name:</label>
-        <input class="form-input" type="text" id="recipe-name" name="recipe-name" />
+    <form class='form new-recipe-form' enctype='multipart/form-data'>
+      <div class='form-group'>
+        <label for='recipe-name'>recipe name:</label>
+        <input
+          class='form-input'
+          type='text'
+          id='recipe-name'
+          name='recipe-name'
+        />
       </div>
-      <div class="form-group">
-        <label for="recipe-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="recipe-funding" name="recipe-funding" />
+      <div class='form-group'>
+        <label for='recipe-ingredients'>Ingredients:</label>
+        <textarea
+          class='form-input'
+          id='recipe-ingredients'
+          name='recipe-ingredients'
+        ></textarea>
       </div>
-      <div class="form-group">
-        <label for="recipe-desc">description:</label>
-        <textarea class="form-input" id="recipe-desc" name="recipe-desc"></textarea>
+      <div class='form-group'>
+        <label for='recipe-desc'>Method:</label>
+        <textarea
+          class='form-input'
+          id='recipe-desc'
+          name='recipe-desc'
+        ></textarea>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+      <div class='form-group'>
+        <label for='prep-time'>Preparation Time:</label>
+        <input type='radio' id='thirty' name='prep-time' value='30' />
+        <label for='thirty'>30</label>
+        <input type='radio' id='fourty-five' name='prep-time' value='45' />
+        <label for='fourty-five'>45</label>
+        <input type='radio' id='sixty' name='prep-time' value='60' />
+        <label for='sixty'>60</label>
+      </div>
+      <div class='form-group'>
+        <label for='recipe-cat'>Category:</label>
+
+        <select id='recipe-cat' aria-label='select cat'>
+          <option selected>Select Category</option>
+          {{#each categories as |category|}}
+            <option value={{category.id}}>{{category.cat_name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class='form-group'>
+        <label for='nuts'>Contain Nuts:</label>
+        <input type='checkbox' name='nuts' id='nuts' value='yes' />
+
+      </div>
+      <div class='form-group'>
+        <label for='vegan'>Vegan</label>
+        <input type='checkbox' name='vegan' id='vegan' value='yes' />
+      </div>
+      {{!-- <form
+      class='mt-4 image-upload'
+      action='add-recipe'
+      method='POST'
+      enctype='multipart/form-data'
+    > --}}
+      <div class='form-group'>
+        <input
+          type='file'
+          name='file'
+          id='input-files'
+          class='form-control-file border'
+        />
+      </div>
+      {{!-- <button type='submit' class='btn btn-primary'>Upload</button> --}}
+    {{!-- </form> --}}
+      <div class='form-group'>
+        <button
+          type='submit'
+          class='btn btn-primary'
+          data-toggle='modal'
+          data-target='#myModal'
+        >Create</button>
       </div>
     </form>
-  </div>
-<a href="api/recipes">See all recipes</a>
-</br>
-<a href="api/addRecipe">Add Recipe</a>
  
 
-<script src="./js/profile.js"></script>
+  </div>
+  <a href='/profile'>See all recipes</a>
+</div>
+<script src='/js/addRecipe.js'></script>
