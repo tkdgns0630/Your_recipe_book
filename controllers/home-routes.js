@@ -63,12 +63,34 @@ router.get('/', async (req, res) => {
 //  get Recipe by Category id
 router.get('/:id', async (req, res) => {
   try {
+
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [
+        { model: Recipe },
+        {
+          model: Recipe,
+          through: UserFavourites,
+          as: 'UserFavRecipes',
+        },
+      ],
+    });
+    console.log(userData);
+    const user = userData.get({ plain: true });
+    console.log(user);
+
+    res.render('profile', {
+      ...user,
+      logged_in: true,
+
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
     );
     const recipePktData = await Category.findByPk(req.params.id, {
       include: [{ model: Recipe }],
+
     });
     const recipePK = recipePktData.get({ plain: true });
     // res.json(recipePK);
