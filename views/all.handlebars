@@ -1,32 +1,32 @@
-    <div class='align-grid'>
-      <div class='grid-container'>
+<div class='align-grid'>
+  <div class='grid-container'>
 
-  {{#each recipePK.recipes as |recipe|}}
-    <div class='recipe-content'>
-       <img
-        src='/images/{{recipe.filename}}'
-        class='rounded py-9 px-9 d-flex align-content-center'
-        height='130px'
-        width='216px'
-        alt='{{recipe.name}}'
-      />
-      Recipe Name:
-      {{recipe.name}}
-    </div>
-  {{/each}}
+    {{#each recipePK.recipes as |recipe|}}
+      <div class='recipe-content'>
+        <img
+          src='/images/{{recipe.filename}}'
+          class='rounded py-9 px-9 d-flex align-content-center'
+          height='130px'
+          width='216px'
+          alt='{{recipe.name}}'
+        />
+        Recipe Name:
+        {{recipe.name}}
+      </div>
+    {{/each}}
 
-{{#each recipes as |recipe|}}
-  <div class='recipe-content'>
-    <img
-      src='/assets/uploads/{{recipe.photo}}'
-      class='rounded py-9 px-9 d-flex align-content-center'
-      height='130px'
-      width='216px'
-      alt='{{recipe.name}}'
-    />
-    <ul>
-      <li> <strong>name:</strong> {{recipe.name}}</li>
-      <!--         <li>
+    {{#each recipes as |recipe|}}
+      <div class='recipe-content'>
+        <img
+          src='/assets/uploads/{{recipe.photo}}'
+          class='rounded py-9 px-9 d-flex align-content-center'
+          height='130px'
+          width='216px'
+          alt='{{recipe.name}}'
+        />
+        <ul>
+          <li> <strong>name:</strong> {{recipe.name}}</li>
+          <!--         <li>
           <strong>ingredients:</strong>
           {{recipe.ingredients}}
         </li>
@@ -54,9 +54,9 @@
           <strong>vegan:</strong>
           {{recipe.vegan}}
         </li> -->
-      </ul>
-    </div>
-  {{/each}}
+        </ul>
+      </div>
+    {{/each}}
 
-</div>
+  </div>
 </div>

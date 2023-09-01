@@ -64,14 +64,14 @@
           <ul class='navbar-nav'>
             <li class='nav-item'><a href='#' class='nav-link'>Contact</a></li>
             {{#if logged_in}}
-            <li class='nav-item'></li>
+              <li class='nav-item'>
                 <a href='/profile' class='nav-link'>Profile</a>
-                </li>
-            <li class='nav-item'>
+              </li>
+              <li class='nav-item'>
                 <a href='/' class='nav-link' id='logout'>Logout</a>
-                </li>
-              {{else}}
-              <li class='nav-item'></li>
+              </li>
+            {{else}}
+              <li class='nav-item'>
                 <a href='/login' class='nav-link'>Login</a>
               </li>{{/if}}
           </ul>
@@ -93,9 +93,8 @@
       </div>
     </header>
 
-        {{{body}}}
-      </div>
-    </div>
+    {{{body}}}
+
     {{#if logged_in}}
       <script src='/js/logout.js'></script>
     {{/if}}
