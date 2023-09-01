@@ -29,7 +29,8 @@ const newFormHandler = async (event) => {
       body: formData,
     });
     if (response.ok) {
-      document.location.replace('/api/add-recipe');
+      document.location.replace('/api/user-profile');
+
     } else {
       alert('Failed to create recipe');
     }
