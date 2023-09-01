@@ -8,7 +8,7 @@ router.get('/login', (req, res) => {
     res.redirect('/api/user-profile');
     return;
   }
-  res.render('login',{login: true});
+  res.render('login', { login: true });
 });
 
 // route to get all categories and recipies
@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // get recipe by id
-router.get('/selected/:id', async (req, res) => {
+router.get('/api/recipes/:id', async (req, res) => {
   try {
     const recipePktData = await Recipe.findByPk(req.params.id, {});
     const selectRecipePK = recipePktData.get({ plain: true });
