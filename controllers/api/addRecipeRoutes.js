@@ -38,6 +38,7 @@ router.get('/', async (req, res) => {
         user,
         categories,
         logged_in: req.session.logged_in,
+        login: true
       });
       return;
     }

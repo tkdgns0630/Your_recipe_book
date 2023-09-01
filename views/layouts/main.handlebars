@@ -80,7 +80,23 @@
           </ul>
         </div>
       </nav>
-     
+     {{#unless login}}
+      <div class='banner'>
+        <img src='/images/banner.jpg' alt='yummy pizza' />
+        <form class='form-inline my-2 my-lg-0'>
+          <input
+            class='form-control mr-sm-2'
+            type='search'
+            placeholder='Search'
+            aria-label='Search'
+          />
+          <button class='btn my-2 my-sm-0 search-btn' type='submit'><i
+              class='fa fa-search'
+            ></i></button>
+        </form>
+      </div>
+    </header>
+    {{/unless}}
     </header>
 
     {{{body}}}

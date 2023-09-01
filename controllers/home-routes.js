@@ -8,7 +8,7 @@ router.get('/login', (req, res) => {
     res.redirect('/profile');
     return;
   }
-  res.render('login');
+  res.render('login',{login: true});
 });
 router.get('/profile', withAuth, async (req, res) => {
   try {

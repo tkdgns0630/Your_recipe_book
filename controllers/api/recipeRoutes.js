@@ -10,20 +10,8 @@ router.get('/:id',withAuth, async (req, res) => {
       }
     });
     const recipe = recipeData.get({ plain: true });
-    res.render('recipes', { recipe, logged_in: req.session.logged_in });
+    res.render('recipes', { recipe, logged_in: req.session.logged_in,login: true });
   } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/', withAuth, async (req, res) => {
-  // We find all recipes in the db and set the data equal to recipeData
-  try {
-    const recipeData = await Recipe.findAll({});
-    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    console.log(recipes);
-    res.render('allRecipes', { recipes, logged_in: req.session.logged_in });
-  } catch (error) {
     res.status(500).json(err);
   }
 });
@@ -42,25 +30,4 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-router.delete('/:id1', async (req, res) => {
-  try {
-    const recipeData = await Recipe.destroy({
-      where: {
-        id: req.params.id1,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!recipeData) {
-      res.status(404).json({ message: 'No recipe found with this id!' });
-      return;
-    }
-
-    res.status(200).json(recipeData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 module.exports = router;
