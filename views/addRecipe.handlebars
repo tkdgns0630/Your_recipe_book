@@ -1,83 +1,112 @@
-<div class='row mt-4'>
-  <div class='col-md-6'>
-    <h3>Create a New Recipe:</h3>
+<div class='row-md mt-4'>
+  <div class='col-md form-ext'>
+    <div class='form-int bg-dark'>
+      <div class='form-body'>
+        <h3>Create a New Recipe:</h3>
 
-    <form class='form new-recipe-form' enctype='multipart/form-data'>
-      <div class='form-group'>
-        <label for='recipe-name'>recipe name:</label>
-        <input
-          class='form-input'
-          type='text'
-          id='recipe-name'
-          name='recipe-name'
-        />
-      </div>
-      <div class='form-group'>
-        <label for='recipe-ingredients'>Ingredients:</label>
-        <textarea
-          class='form-input'
-          id='recipe-ingredients'
-          name='recipe-ingredients'
-        ></textarea>
-      </div>
-      <div class='form-group'>
-        <label for='recipe-desc'>Method:</label>
-        <textarea
-          class='form-input'
-          id='recipe-desc'
-          name='recipe-desc'
-        ></textarea>
-      </div>
-      <div class='form-group'>
-        <label for='prep-time'>Preparation Time:</label>
-        <input type='radio' id='thirty' name='prep-time' value='30' />
-        <label for='thirty'>30</label>
-        <input type='radio' id='fourty-five' name='prep-time' value='45' />
-        <label for='fourty-five'>45</label>
-        <input type='radio' id='sixty' name='prep-time' value='60' />
-        <label for='sixty'>60</label>
-      </div>
-      <div class='form-group'>
-        <label for='recipe-cat'>Category:</label>
+        <form class='new-recipe-form' enctype='multipart/form-data'>
+          <div class='form-group col-md-12'>
+            <label for='recipe-name'>Recipe name:</label>
+            <input
+              class='form-input'
+              type='text'
+              id='recipe-name'
+              name='recipe-name'
+            />
+          </div>
+          <div class='form-group col-md-12'>
+            <label for='recipe-ingredients'>Ingredients:</label>
+            <textarea
+              class='form-input'
+              id='recipe-ingredients'
+              name='recipe-ingredients'
+            ></textarea>
+          </div>
+          <div class='form-group col-md-12'>
+            <label for='recipe-desc'>Method:</label>
+            <textarea
+              class='form-input'
+              id='recipe-desc'
+              name='recipe-desc'
+            ></textarea>
+          </div>
+          <div class='form-group col-md-12'>
+            <label for='prep-time'>Preparation Time:</label>
+            <input type='radio' id='thirty' name='prep-time' value='30' />
+            <label for='thirty'>30</label>
+            <input type='radio' id='fourty-five' name='prep-time' value='45' />
+            <label for='fourty-five'>45</label>
+            <input type='radio' id='sixty' name='prep-time' value='60' />
+            <label for='sixty'>60</label>
+          </div>
+          <div class='form-group col-md-12'>
+            <label for='recipe-cat'>Category:</label>
 
-        <select id='recipe-cat' aria-label='select cat'>
-          <option selected>Select Category</option>
-          {{#each categories as |category|}}
-            <option value={{category.id}}>{{category.cat_name}}</option>
-          {{/each}}
-        </select>
-      </div>
-      <div class='form-group'>
-        <label for='nuts'>Contain Nuts:</label>
-        <input type='checkbox' name='nuts' id='nuts' value='yes' />
+            <select id='recipe-cat' aria-label='select cat'>
+              <option selected>Select Category</option>
+              {{#each categories as |category|}}
+                <option value={{category.id}}>{{category.cat_name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <div class='form-group col-md-12'>
+            <label for='nuts'>Contain Nuts:</label>
+            <input type='checkbox' name='nuts' id='nuts' value='yes' />
 
-      </div>
-      <div class='form-group'>
-        <label for='vegan'>Vegan</label>
-        <input type='checkbox' name='vegan' id='vegan' value='yes' />
-      </div>
-    
-      <div class='form-group'>
-        <input
-          type='file'
-          name='file'
-          id='input-files'
-          class='form-control-file border'
-        />
-      </div>
-  
-      <div class='form-group'>
-        <button
-          type='submit'
-          class='btn btn-primary'
-          data-toggle='modal'
-          data-target='#myModal'
-        >Create</button>
-      </div>
-    </form>
- 
+          </div>
+          <div class='form-group col-md-12'>
+            <label for='vegan'>Vegan</label>
+            <input type='checkbox' name='vegan' id='vegan' value='yes' />
+          </div>
+          <div class='form-group col-md-12'>
+            <input
+              type='file'
+              name='file'
+              id='input-files'
+              class='form-control-file border'
+            />
+          </div>
+          <div class='form-group col-md-12'>
+            <button
+              type='submit'
+              class='btn btn-primary'
+              data-bs-toggle='modal'
+              data-bs-target='#myModal'
+            >Submit</button>
+            <div id='myModal' class='modal fade' role='dialog'>
+              <div class='modal-dialog'>
 
+                <!-- Modal content-->
+                <div class='modal-content'>
+                  <div class='modal-header'>
+                    <button
+                      type='button'
+                      class='close'
+                      data-dismiss='modal'
+                    >&times;</button>
+                    <h4 class='modal-title'>Modal Header</h4>
+                  </div>
+                  <div class='modal-body'>
+                    <p>Recipe Created succesfully.</p>
+                  </div>
+                  <div class='modal-footer'>
+                    <button
+                      type='button'
+                      class='btn btn-default'
+                      data-dismiss='modal'
+                    >Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <a href='/profile'><h2>See all recipes</h2></a>
   </div>
-  <a href='/profile'>See all recipes</a>
+
 </div>
+
 <script src='/js/addRecipe.js'></script>

@@ -21,7 +21,7 @@ Recipe.init(
     method: {
       type: DataTypes.STRING(1234),
     },
-    prep_time:{
+    prep_time: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -62,9 +62,9 @@ Recipe.init(
       allowNull: false,
       defaultValue: false,
     },
-    photo:{
+    photo: {
       type: DataTypes.BLOB('long'),
-    }
+    },
   },
   {
     sequelize,
