@@ -2,20 +2,15 @@ const router = require('express').Router();
 const { Recipe, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/:id',withAuth, async (req, res) => {
   try {
-    const recipeData = await Recipe.findAll({
-      // where: {
-      //   userId: req.session.user_id,
-      // },
+    const recipeData = await Recipe.findByPk(req.params.id,{
+      where: {
+        user_id: req.session.user_id,
+      }
     });
-
-    if (!recipeData) {
-      res.status(404).json({ message: 'No recipe found !' });
-      return;
-    }
-
-    res.status(200).json(recipeData);
+    const recipe = recipeData.get({ plain: true });
+    res.render('recipes', { recipe, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }

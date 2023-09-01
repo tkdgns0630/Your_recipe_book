@@ -1,3 +1,17 @@
+ <div class='banner'>
+        <img src='/images/banner.jpg' alt='yummy pizza' />
+        <form class='form-inline my-2 my-lg-0'>
+          <input
+            class='form-control mr-sm-2'
+            type='search'
+            placeholder='Search'
+            aria-label='Search'
+          />
+          <button class='btn my-2 my-sm-0 search-btn' type='submit'><i
+              class='fa fa-search'
+            ></i></button>
+        </form>
+      </div>
 <div class='row'>
   <div class='col-auto'>
     <h2>Welcome, {{user.name}}!</h2>
@@ -10,7 +24,7 @@
         {{#each user.recipes as |recipe|}}
           <div class='row mb-2'>
             <div class='col-md-8'>
-              <h4><a href='/recipe/{{recipe.id}}'>{{recipe.name}}</a></h4>
+              <h4><a href='/api/recipes/{{recipe.id}}'>{{recipe.name}}</a></h4>
               <img
                 src='/assets/uploads/{{recipe.photo}}'
                 alt={{recipe.photo}}
