@@ -1,21 +1,20 @@
-
-  {{#if user.recipes.length}}
-  <div class="col-md-6 project-list">
+{{#if user.recipes.length}}
+  <div class='col-md-6 project-list'>
     <h3>All Recipes:</h3>
 
     {{#each user.recipes as |recipe|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/recipe/{{recipe.id}}">{{recipe.name}}</a></h4>
+      <div class='row mb-2'>
+        <div class='col-md-8'>
+          <h4><a href='/recipe/{{recipe.id}}'>{{recipe.name}}</a></h4>
+        </div>
+        <img src='/images/{{recipe.filename}}' alt='{{recipe.name}}' />
+        <div class='col-md-4'>
+          <button
+            class='btn btn-sm btn-danger'
+            data-id='{{recipe.id}}'
+          >DELETE</button>
+        </div>
       </div>
-      <img src='/images/{{recipe.filename}}' alt='{{recipe.name}}' />
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{recipe.id}}">DELETE</button>
-      </div>
-    </div>
     {{/each}}
   </div>
-  {{/if}}
-
-
-
+{{/if}}

@@ -99,6 +99,6 @@ li {
 .delBut,
 .del-per {
   display: flex;
-  margin-left: 30px;
+  margin-left: -70px;
   margin-top: 0px;
 }
