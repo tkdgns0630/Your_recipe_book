@@ -40,20 +40,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//     const categoryData = await Category.findAll();
-//     const categories = categoryData.map((category) =>
-//       category.get({ plain: true })
-//     );
-//     const recipePktData = await Category.findByPk(req.params.id, {
-//       include: [{ model: Recipe }],
-//     });
-//     const recipePK = recipePktData.get({ plain: true });
-//     // res.json(recipePK);
-//     // console.log(recipePK);
-//     res.render('all', { recipePK, categories });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
+// get recipe by id
+router.get('/selected/:id', async (req, res) => {
+  try {
+    const recipePktData = await Recipe.findByPk(req.params.id, {});
+    const selectRecipePK = recipePktData.get({ plain: true });
+    console.log(selectRecipePK);
+    // res.json(selectRecipePK)
+    res.render('all', { selectRecipePK });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
