@@ -10,43 +10,6 @@ router.get('/login', (req, res) => {
   }
   res.render('login',{login: true});
 });
-router.get('/profile', withAuth, async (req, res) => {
-  try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Recipe }],
-    });
-    const user = userData.get({ plain: true });
-    const categoryData = await Category.findAll();
-    const categories = categoryData.map((category) =>
-      category.get({ plain: true })
-    );
-    res.render('profile', { user, logged_in: true, categories });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-// Use withAuth middleware to prevent access to route
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [
-//         { model: Recipe, through: UserFavourites, as: 'UserFavRecipes' },
-//       ],
-//     });
-//     const user = userData.get({ plain: true });
-
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 // route to get all categories and recipies
 router.get('/', async (req, res) => {
@@ -77,44 +40,16 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//get Recipe by User id
-//router.get('/:id', async (req, res) => {
-//  try {
-//    // Find the logged in user based on the session ID
-//    const userData = await User.findByPk(req.session.user_id, {
-//      attributes: { exclude: ['password'] },
-//      include: [
-//        { model: Recipe },
-//        {
-//          model: Recipe,
-//          through: UserFavourites,
-//          as: 'UserFavRecipes',
-//        },
-//      ],
-//    });
-//    console.log(userData);
-//    const user = userData.get({ plain: true });
-//    console.log(user);
-//
-//    res.render('profile', {
-//      ...user,
-//      logged_in: true,
-//    });
-//
-//    const categoryData = await Category.findAll();
-//    const categories = categoryData.map((category) =>
-//      category.get({ plain: true })
-//    );
-//    const recipePktData = await Category.findByPk(req.params.id, {
-//      include: [{ model: Recipe }],
-//    });
-//    const recipePK = recipePktData.get({ plain: true });
-//    // res.json(recipePK);
-//    // console.log(recipePK);
-//    res.render('all', { recipePK, categories });
-//  } catch (err) {
-//    res.status(500).json(err);
-//  }
-//});
-
+// get recipe by id
+router.get('/selected/:id', async (req, res) => {
+  try {
+    const recipePktData = await Recipe.findByPk(req.params.id, {});
+    const selectRecipePK = recipePktData.get({ plain: true });
+    console.log(selectRecipePK);
+    // res.json(selectRecipePK)
+    res.render('all', { selectRecipePK });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

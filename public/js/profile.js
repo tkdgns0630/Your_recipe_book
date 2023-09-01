@@ -30,7 +30,7 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/api/user-profile');
     } else {
       alert('Failed to delete project');
     }
@@ -38,14 +38,14 @@ const delButtonHandler = async (event) => {
 };
 
 const delUserRep = async (event) => {
-  if (event.target.hasAttribute('user-id1')) {
-    const id1 = event.target.getAttribute('user-id1');
-    const response = await fetch(`/api/recipes/${id1}`, {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+    const response = await fetch(`/api/user-profile/${id}`, {
       method: 'DELETE',
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/api/user-profile');
     } else {
       alert('Failed to delete project');
     }

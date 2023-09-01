@@ -157,3 +157,15 @@ label[for=thirty],label[for=fourty-five]{
     grid-column: span 1;
   }
 }
+
+.delBut,
+.del-per {
+  display: flex;
+  margin-left: 45px;
+  margin-top: 0px;
+}
+
+.Addrep {
+  font-weight: bold;
+  font-size: 20px;
+}
