@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { Category, Recipe, User } = require('../models');
-const withAuth = require('../utils/auth');
+const { Category, Recipe } = require('../models');
+//const withAuth = require('../utils/auth');
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
