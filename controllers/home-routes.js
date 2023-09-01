@@ -30,6 +30,7 @@ router.get('/', async (req, res) => {
 // get Recipe by Category id
 router.get('/:id', async (req, res) => {
   try {
+    const loggedIn = req.session.logged_in;
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
@@ -38,7 +39,7 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Recipe }],
     });
     const recipePK = recipePktData.get({ plain: true });
-    res.render('all', { recipePK, categories });
+    res.render('all', { recipePK, categories,logged_in: loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -47,6 +48,7 @@ router.get('/:id', async (req, res) => {
 // get recipe by id
 router.get('/api/recipes/:id', async (req, res) => {
   try {
+    const loggedIn = req.session.logged_in;
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
@@ -55,7 +57,7 @@ router.get('/api/recipes/:id', async (req, res) => {
     const selectRecipePK = recipePktData.get({ plain: true });
     console.log(selectRecipePK);
     // res.json(selectRecipePK)
-    res.render('all', { selectRecipePK, categories });
+    res.render('all', { selectRecipePK, categories, logged_in: loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
