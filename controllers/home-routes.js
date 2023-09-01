@@ -45,7 +45,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // get recipe by id
-router.get('/selected/:id', async (req, res) => {
+router.get('/api/recipes/:id', async (req, res) => {
   try {
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
