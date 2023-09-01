@@ -2,13 +2,17 @@ const router = require('express').Router();
 const { Category, Recipe } = require('../models');
 //const withAuth = require('../utils/auth');
 
-router.get('/login', (req, res) => {
+router.get('/login',async (req, res) => {
   // If the user is already logged in, redirect the request to another route
+  const categoryData = await Category.findAll();
+  const categories = categoryData.map((category) =>
+    category.get({ plain: true })
+  );
   if (req.session.logged_in) {
     res.redirect('/api/user-profile');
     return;
   }
-  res.render('login',{login: true});
+  res.render('login',{categories,login: true});
 });
 
 // route to get all categories and recipies
@@ -43,11 +47,15 @@ router.get('/:id', async (req, res) => {
 // get recipe by id
 router.get('/selected/:id', async (req, res) => {
   try {
+    const categoryData = await Category.findAll();
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
     const recipePktData = await Recipe.findByPk(req.params.id, {});
     const selectRecipePK = recipePktData.get({ plain: true });
     console.log(selectRecipePK);
     // res.json(selectRecipePK)
-    res.render('all', { selectRecipePK });
+    res.render('all', { selectRecipePK, categories });
   } catch (err) {
     res.status(500).json(err);
   }
