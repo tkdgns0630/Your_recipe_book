@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, User } = require('../../models');
+const { Recipe } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/:id',withAuth, async (req, res) => {
@@ -16,18 +16,4 @@ router.get('/:id',withAuth, async (req, res) => {
   }
 });
 
-router.get('/', withAuth, async (req, res) => {
-  // We find all dishes in the db and set the data equal to dishData
-  try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Recipe }],
-    });
-    const user = userData.get({ plain: true });
-    // const user = userData.map((recipe) => recipe.get({ plain: true }));
-    res.render('recipes', { user, logged_in: req.session.logged_in });
-  } catch (error) {
-    res.status(500).json(err);
-  }
-});
 module.exports = router;
