@@ -1,4 +1,4 @@
-const { UserFavourites, Recipe, User } = require('../models');
+const { UserFavourites} = require('../models');
 
 const userFavData = [
   {

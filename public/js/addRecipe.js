@@ -10,20 +10,20 @@ const newFormHandler = async (event) => {
   const vegan = document.querySelector('#vegan:checked')!==null;
   const photo = document.querySelector('#input-files').files[0];
 
-  const formData = new FormData();  
-  formData.append("name",name);
-  formData.append("ingredients",ingredients);
-  formData.append("method",method);
-  formData.append("prep_time",prep_time);
-  formData.append("cat_id",cat_id);
-  formData.append("vegan",vegan);
-  formData.append("has_nuts",has_nuts);
-  formData.append("file",photo)
+  const formData = new FormData();
+  formData.append('name',name);
+  formData.append('ingredients',ingredients);
+  formData.append('method',method);
+  formData.append('prep_time',prep_time);
+  formData.append('cat_id',cat_id);
+  formData.append('vegan',vegan);
+  formData.append('has_nuts',has_nuts);
+  formData.append('file',photo);
 
   if (name && ingredients && method && prep_time && cat_id ) {
-    const response = await fetch(`/api/add-recipe`, {
+    const response = await fetch('/api/add-recipe', {
       method: 'POST',
-      body: formData,     
+      body: formData,
     });
 
     if (response.ok) {

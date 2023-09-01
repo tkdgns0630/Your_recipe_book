@@ -36,9 +36,7 @@ li {
   border-radius: 5px;
   outline: none;
 }
-.add-recipe h3{
-  margin-left: 2rem;
-}
+
 .form {
   margin-left: 2rem;
 }
@@ -48,7 +46,53 @@ li {
   margin-bottom: 5px;
   font-weight: bold;
 }
+.form-ext {
+  display: flex; 
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.form-int {
+    position: relative;
+    text-align: center; 
+   
+    display: flex;
+    
+    justify-content: center;
+   
+    align-items: center;
+    padding: 60px;
+}
 
+.form-body {
+  color: #fff;
+    border: 3px solid #fff;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 540px;
+   
+    border-radius: 10px;
+    text-align: left;
+    
+    transition: all 0.4s ease;
+}
+.form-int h3 {
+  color: #fff;
+  text-align: left;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.form-group label{
+  width: 30%;
+}
+label[for=thirty],label[for=fourty-five]{
+  width:auto
+}
 /* btns */
 .search-btn {
   width: 40px;
