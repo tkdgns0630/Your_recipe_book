@@ -1,6 +1,7 @@
 <div class='align-grid'>
   <div class='grid-container'>
 
+{{!-- recipe by category id --}}
     {{#each recipePK.recipes as |recipe|}}
       <div class='recipe-content'>
         <img
@@ -15,8 +16,26 @@
       </div>
     {{/each}}   
 
+{{!-- recipe by  id --}}
+{{#if selectRecipePK}}
+      <div class='recipe-content'>
+        <img
+          src='/assets/uploads/{{ selectRecipePK.photo}}'
+          class='rounded py-9 px-9 d-flex align-content-center'
+          height='130px'
+          width='216px'
+          alt='{{ selectRecipePK.name}}'
+        />
+        Recipe Name:
+        {{ selectRecipePK.name}}
+      </div>
+      {{/if}}
+
+
+{{!-- all recipes --}}
     {{#each recipes as |recipe|}}
       <div class='recipe-content'>
+        <a href="/selected/{{recipe.id}}">
         <img
           src='/assets/uploads/{{recipe.photo}}'
           class='rounded py-9 px-9 d-flex align-content-center'
@@ -26,6 +45,7 @@
         />
         <ul>
           <li> <strong>name:</strong> {{recipe.name}}</li>
+
           <!--         <li>
           <strong>ingredients:</strong>
           {{recipe.ingredients}}
@@ -55,6 +75,7 @@
           {{recipe.vegan}}
         </li> -->
         </ul>
+                </a>
       </div>
     {{/each}}
 

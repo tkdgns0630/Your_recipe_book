@@ -77,6 +77,19 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// get recipe by id
+router.get('/selected/:id', async (req, res) => {
+  try {
+    const recipePktData = await Recipe.findByPk(req.params.id, {});
+    const selectRecipePK = recipePktData.get({ plain: true });
+    console.log(selectRecipePK);
+    // res.json(selectRecipePK)
+    res.render('all', { selectRecipePK });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //get Recipe by User id
 //router.get('/:id', async (req, res) => {
 //  try {
