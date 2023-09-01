@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { UserFavourites } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const recipeData = await UserFavourites.destroy({

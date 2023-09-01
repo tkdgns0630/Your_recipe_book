@@ -34,8 +34,6 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Recipe }],
     });
     const recipePK = recipePktData.get({ plain: true });
-    // res.json(recipePK);
-    // console.log(recipePK);
     res.render('all', { recipePK, categories });
   } catch (err) {
     res.status(500).json(err);

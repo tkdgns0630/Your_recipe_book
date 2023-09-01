@@ -13,7 +13,6 @@ const newFormHandler = async (event) => {
   const has_nuts = document.querySelector('#nuts:checked') !== null;
   const vegan = document.querySelector('#vegan:checked') !== null;
   const photo = document.querySelector('#input-files').files[0];
-
   const formData = new FormData();
   formData.append('name', name);
   formData.append('ingredients', ingredients);
@@ -28,23 +27,15 @@ const newFormHandler = async (event) => {
     const response = await fetch('/api/add-recipe', {
       method: 'POST',
       body: formData,
-      // headers: {
-      //   'Content-Type': 'multipart/form-data';
-      //   boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW,
-      // },
     });
-
     if (response.ok) {
-      console.log(response);
       document.location.replace('/api/user-profile');
+
     } else {
       alert('Failed to create recipe');
     }
   }
 };
-// $('#myModal').on('shown.bs.modal', function () {
-//   $('#myInput').trigger('focus')
-// })
 
 document
   .querySelector('.new-recipe-form')

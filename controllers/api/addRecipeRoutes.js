@@ -3,17 +3,15 @@ const { Recipe, User, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 const upload = require('../../utils/upload');
 
-router.post('/', upload.single('file'), withAuth, async (req, res) => {
+router.post('/', [withAuth, upload.single('file')], async (req, res) => {
   try {
     console.log(req.file.filename);
     console.log(req.body);
-
     const recipeData = await Recipe.create({
       ...req.body,
       photo: req.file.filename,
       user_id: req.session.user_id,
     });
-
     res.status(200).json(recipeData);
   } catch (err) {
     res.status(500).json(err);
@@ -48,13 +46,5 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-// router.post('/',upload.single("file"), async (req, res) => {
-//   try {
-//     console.log(req.file)
-
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 module.exports = router;

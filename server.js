@@ -14,7 +14,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 // serve static files
 app.use(express.static(path.join(__dirname, 'public')));
-global.__basedir=__dirname;
+global.__basedir = __dirname;
 const sess = {
   secret: 'Super secret secret',
   cookie: {},

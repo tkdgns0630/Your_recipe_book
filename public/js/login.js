@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/api/user-profile');
     } else {
-      alert(response.statusText);
+      document.getElementById('login-fail').innerHTML = 'Login Failed';
     }
   }
 };
@@ -38,7 +38,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/api/user-profile');
     } else {
-      alert(response.statusText);
+      document.getElementById('sign-up-fail').innerHTML = 'Invalid Details';
     }
   }
 };
