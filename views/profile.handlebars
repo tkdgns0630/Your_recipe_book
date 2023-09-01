@@ -1,4 +1,7 @@
-<h2>Welcome, {{name}}!</h2>
+<div>
+  <h2>Welcome, {{name}}!</h2>
+  <a href='/api/add-recipe'>Add Recipe</a>
+</div>
 <br />
 
 {{#if recipes}}
@@ -20,7 +23,7 @@
           <button
             class='btn btn-sm btn-danger del-per'
             data-id='{{recipe.id}}'
-          >DELETE</button>
+          >REMOVE</button>
         </div>
       </div>
     {{/each}}
@@ -49,15 +52,13 @@
           <button
             class='delBut btn btn-sm btn-danger'
             user-id='{{id}}'
-          >DELETE</button>
+          >REMOVE</button>
         </div>
       </div>
     {{/each}}
-
   </div>
 {{/if}}
 
 <br />
-<a href='/add-recipe'>Add Recipe</a>
 
 <script src='/js/profile.js'></script>
