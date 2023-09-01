@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { Category, Recipe, User } = require('../models');
-const withAuth = require('../utils/auth');
+const { Category, Recipe } = require('../models');
+//const withAuth = require('../utils/auth');
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/api/user-profile');
     return;
   }
-  res.render('login');
+  res.render('login',{login: true});
 });
 
 // route to get all categories and recipies
