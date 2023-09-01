@@ -34,7 +34,7 @@
 {{!-- all recipes --}}
     {{#each recipes as |recipe|}}
       <div class='recipe-content'>
-        <a href="/selected/{{recipe.id}}">
+        <a href="/api/recipes/{{recipe.id}}">
         <img
           src='/assets/uploads/{{recipe.photo}}'
           class='rounded py-9 px-9 d-flex align-content-center'
