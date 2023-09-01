@@ -43,24 +43,6 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id1', async (req, res) => {
-  try {
-    const recipeData = await Recipe.destroy({
-      where: {
-        id: req.params.id1,
-        user_id: req.session.user_id,
-      },
-    });
 
-    if (!recipeData) {
-      res.status(404).json({ message: 'No recipe found with this id!' });
-      return;
-    }
-
-    res.status(200).json(recipeData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 module.exports = router;
