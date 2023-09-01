@@ -95,3 +95,10 @@ li {
     grid-column: span 1;
   }
 }
+
+.delBut,
+.del-per {
+  display: flex;
+  margin-left: 30px;
+  margin-top: 0px;
+}
