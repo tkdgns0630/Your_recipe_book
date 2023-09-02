@@ -1,8 +1,8 @@
 
     {{! recipe by category id }}
     {{#each recipePK.recipes as |recipe|}}
-      <a href='/recipes/{{recipe.id}}'>
         <div class='recipe-content'>
+      <a href='/recipes/{{recipe.id}}'>
           <img
             src='/assets/uploads/{{recipe.photo}}'
             class='rounded py-9 px-9 d-flex align-content-center'
@@ -12,8 +12,8 @@
           />
           Recipe Name:
           {{recipe.name}}
-        </div>
       </a>
+        </div>
     {{/each}}
 
     {{! all recipes }}
