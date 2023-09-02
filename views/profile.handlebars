@@ -1,66 +1,66 @@
-<div class='align-grid'>
-  <div class='grid-container'>
-<div>
-  <h2>Welcome, {{name}}!</h2>
-  <a class='Addrep' href='/api/add-recipe'>Add Recipe</a>
+<div class='login-content' >
+  <h2 >Welcome, {{name}}!</h2>
+  <a class='Addrep ml-4' href='/api/add-recipe'>
+    Add Recipe</a>
 </div>
 <br />
 
-{{#if recipes}}
-  <div class='recipe-list col-sm'>
-    <h3>User Recipes:</h3>
-    {{#each recipes as |recipe|}}
-      <div class='row mb-2'>
-        <div class='col-md-8'>
-          <a href='/recipe/{{photo}}'><h4>{{name}}</h4>
-            <img
-              src='/assets/uploads/{{photo}}'
-              class='rounded py-9 px-9 d-flex align-content-center'
-              height='350px'
-              width='500px'
-              alt={{name}}
-            /></a>
+<div class='ml-5 d-flex row'>
+  {{#if recipes}}
+    <div class='recipe-list col-sm'>
+      <h3>User Recipes:</h3>
+      {{#each recipes as |recipe|}}
+        <div class='row mb-2'>
+          <div class='col-md-8'>
+            <a href='/recipes/{{recipe.id}}'><h4>{{name}}</h4>
+              <img
+                src='/assets/uploads/{{photo}}'
+                class='rounded py-9 px-9 d-flex align-content-center'
+                height='350px'
+                width='500px'
+                alt={{name}}
+              /></a>
+          </div>
+          <div class='col-md-4'>
+            <button
+              class='btn btn-sm btn-danger del-per'
+              data-id='{{recipe.id}}'
+            ><i class='fa-solid fa-trash'></i></button>
+          </div>
+
         </div>
-        <div class='col-md-4'>
-          <button
-            class='btn btn-sm btn-danger del-per'
-            data-id='{{recipe.id}}'
-          ><i class='fa-solid fa-trash'></i></button>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if UserFavRecipes}}
+
+    <div class='recipe-list col-sm'>
+      <h3>Favourite recipes:</h3>
+
+      {{#each UserFavRecipes}}
+        <div class='row mb-2'>
+          <div class='col-md-8'>
+            <a href='/recipe/{{photo}}'><h4>{{name}}</h4>
+              <img
+                src='/assets/uploads/{{photo}}'
+                class='rounded py-9 px-9 d-flex align-content-center'
+                height='350px'
+                width='500px'
+                alt='{{name}}'
+              /></a>
+            <a href='https://www.google.com.au/'>{{recipe.name}}</a>
+          </div>
+          <div class='col-md-4'>
+            <button class='delBut btn btn-sm btn-danger' user-id='{{id}}'><i
+                class='fa-solid fa-trash'
+              ></i></button>
+          </div>
         </div>
-
-      </div>
-    {{/each}}
-  </div>
-{{/if}}
-
-{{#if UserFavRecipes}}
-
-  <div class='recipe-list col-sm'>
-    <h3>Favourite recipes:</h3>
-
-    {{#each UserFavRecipes}}
-      <div class='row mb-2'>
-        <div class='col-md-8'>
-          <a href='/recipe/{{photo}}'><h4>{{name}}</h4>
-            <img
-              src='/assets/uploads/{{photo}}'
-              class='rounded py-9 px-9 d-flex align-content-center'
-              height='350px'
-              width='500px'
-              alt='{{name}}'
-            /></a>
-          <a href='https://www.google.com.au/'>{{recipe.name}}</a>
-        </div>
-        <div class='col-md-4'>
-          <button class='delBut btn btn-sm btn-danger' user-id='{{id}}'><i
-              class='fa-solid fa-trash'
-            ></i></button>
-        </div>
-      </div>
-    {{/each}}
-  </div>
-{{/if}}
-
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
 <br />
 </div>
 </div>

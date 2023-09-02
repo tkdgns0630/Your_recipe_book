@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { UserFavourites, User, Recipe } = require('../../models');
+const { UserFavourites, User, Recipe, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
@@ -16,10 +16,16 @@ router.get('/', withAuth, async (req, res) => {
         },
       ],
     });
+    console.log(userData);
+    const categoryData = await Category.findAll();
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
     const user = userData.get({ plain: true });
     console.log(user);
 
     res.render('profile', {
+      categories,
       ...user,
       logged_in: req.session.logged_in,
     });

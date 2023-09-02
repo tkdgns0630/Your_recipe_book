@@ -33,6 +33,7 @@ router.get('/', async (req, res) => {
       );
 
       res.render('addRecipe', {
+        layout:'layout',
         user,
         categories,
         logged_in: req.session.logged_in
