@@ -1,40 +1,31 @@
-
-<div class='row'>
-  <div class='col-md-6'>
-    <div class='recipe-content card'>
-      <img
-        src='/assets/uploads/{{recipe.photo}}'
-        class='rounded py-9 px-9 d-flex align-content-center'
-        height='130px'
-        width='216px'
-        alt='{{recipe.name}}'
-      />
-    </div>
+<div class='login-content'>
+  <div class='recipe-content'>
+    <img
+      src='/assets/uploads/{{recipe.photo}}'
+      class='rounded py-9 px-9 d-flex align-content-center'
+      height='130px'
+      width='216px'
+      alt='{{recipe.name}}'
+    />
   </div>
-  <div class='col-md-6'>
-    <div class='recipe-content card'>
-      <div class='row-md-12 mx-1'><h2>{{recipe.name}}
-          <i
-            class='fa fa-heart'
-            style='color: rgb(78, 3, 3);'
-            aria-hidden='true'
-          ></i></h2></div>
-      <div class='row-md-12 mx-1'>
-        <div class='mx-1'><h3>PrepTime</h3>
-          <h5>{{recipe.prep_time}} mins</h5></div>
-      </div>
-      <div class='row-md-12 mx-1'><h3>Ingredients (
-          {{#if recipe.vegan}}V
-          {{else}}
-            NV
-          {{/if}}
-          {{#if recipe.has_nuts}}/Contain nuts{{/if}}
-          )</h3>{{recipe.ingredients}}
-
-      </div>
-      <div class='row-md-12 mx-1'><h3>Method</h3>{{recipe.method}}</div>
-      <div class='row-md-12 mx-1' style="border: 2px solid #9a8f8f;">{{recipe.likes}} likes</div>
-      
-    </div>
-  </div>
+</div>
+<div class='login-content'>
+  <div><h2>{{recipe.name}}
+      <i
+        class='fa fa-heart'
+        style='color: rgb(78, 3, 3);'
+        aria-hidden='true'
+      ></i></h2></div>
+  <h3>PrepTime</h3>
+  <h5>{{recipe.prep_time}} mins</h5>
+  <h3>Ingredients (
+    {{#if recipe.vegan}}V
+    {{else}}
+      NV
+    {{/if}}
+    {{#if recipe.has_nuts}}/Contain nuts{{/if}}
+    )</h3>{{recipe.ingredients}}
+  <h3>Method</h3>{{recipe.method}}
+  {{recipe.likes}}
+  likes
 </div>
