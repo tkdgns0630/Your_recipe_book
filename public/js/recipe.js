@@ -1,32 +1,28 @@
 const likeBtn = document.querySelector('#like-btn');
 const whiteHeart = '\u2661';
 const blackHeart = '\u2665';
-var toggleButtonText = function (action, recipeId) {
-  switch (action) {
-  case whiteHeart:
+var toggleButtonText = function (recipeId, action) {
+  if (action === whiteHeart) {
     likeBtn.textContent = blackHeart;
     document.querySelector('#count-' + recipeId).textContent++;
-    break;
-
-  default:
+  } else {
     likeBtn.textContent = whiteHeart;
     document.querySelector('#count-' + recipeId).textContent--;
-    break;
   }
 };
 
 var newEventHandler = async function (event) {
   if (event.target.hasAttribute('data-id')) {
-    var recipeId = event.target.getAttribute('data-id');
-    var action = event.target.textContent.trim();
+    const recipeId = event.target.getAttribute('data-id');
+    const action = event.target.textContent.trim();
     const response = await fetch(`/api/recipes/${recipeId}`, {
       method: 'PUT',
       body: JSON.stringify({ recipeId, action }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      toggleButtonText(action, recipeId);
+      toggleButtonText(recipeId, action);
     } else {
       alert('Failed to like');
     }
@@ -38,9 +34,6 @@ const commentFormHandler = async (event) => {
   event.preventDefault();
   const recId = document.querySelector('input[name="comment"]').value;
 
-  console.log('test');
-  console.log(recId);
-
   const commentText = document.querySelector(
     'textarea[name="recipe-comments"]'
   ).value;
@@ -51,11 +44,11 @@ const commentFormHandler = async (event) => {
       method: 'POST',
       body: JSON.stringify({
         recId,
-        commentText
+        commentText,
       }),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     });
     if (response.ok) {
       document.location.reload();
@@ -68,3 +61,4 @@ const commentFormHandler = async (event) => {
 document
   .querySelector('.new-comment-form')
   .addEventListener('submit', commentFormHandler);
+

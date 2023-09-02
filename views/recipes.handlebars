@@ -13,7 +13,7 @@
   <div class='col-md-6'>
     <div class='recipe-content card'>
       <div class='row-md-12 mx-1'><h2>{{recipe.name}}
-          <button data-id='{{recipe.id}}' id='like-btn'>
+          <button data-id='{{recipe.id}}' id='like-btn' data-value='\u2661'>
             ♡
             {{! <i
             class='fa fa-heart'
@@ -36,7 +36,7 @@
       </div>
       <div class='row-md-12 mx-1'><h3>Method</h3>{{recipe.method}}</div>
       <div class='row-md-12 mx-1'>Likes</div>
-      <div id='count-{{recipe.id}}'>{{recipe.likes}}</div>
+      <div id='count-{{recipe.id}}' data-initial-value='{{recipe.likes}}'>{{recipe.likes}}</div>
       <div class='row-md-12 mx-1'><h3>Add your valuable comment:</h3>
         <form class='new-comment-form' id='comments'>
           <div class='form-group'>

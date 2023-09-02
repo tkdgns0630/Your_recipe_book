@@ -35,8 +35,7 @@ router.get('/', async (req, res) => {
       res.render('addRecipe', {
         user,
         categories,
-        logged_in: req.session.logged_in,
-        banner: true
+        logged_in: req.session.logged_in
       });
       return;
     }
