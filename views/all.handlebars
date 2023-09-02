@@ -1,83 +1,39 @@
 <div class='align-grid'>
   <div class='grid-container'>
-{{!-- recipe by category id --}}
+    
+    {{! recipe by category id }}
     {{#each recipePK.recipes as |recipe|}}
-    <a href="api/recipes/{{recipe.id}}">
-      <div class='recipe-content'>
-        <img
-          src='/assets/uploads/{{recipe.photo}}'
-          class='rounded py-9 px-9 d-flex align-content-center'
-          height='130px'
-          width='216px'
-          alt='{{recipe.name}}'
-        />
-        Recipe Name:
-        {{recipe.name}}
-      </div>
-    </a>
-    {{/each}}   
+      <a href='/recipes/{{recipe.id}}'>
+        <div class='recipe-content'>
+          <img
+            src='/assets/uploads/{{recipe.photo}}'
+            class='rounded py-9 px-9 d-flex align-content-center'
+            height='130px'
+            width='216px'
+            alt='{{recipe.name}}'
+          />
+          Recipe Name:
+          {{recipe.name}}
+        </div>
+      </a>
+    {{/each}}
 
-{{!-- recipe by  id --}}
-{{#if selectRecipePK}}
-      <div class='recipe-content'>
-        <img
-          src='/assets/uploads/{{ selectRecipePK.photo}}'
-          class='rounded py-9 px-9 d-flex align-content-center'
-          height='130px'
-          width='216px'
-          alt='{{ selectRecipePK.name}}'
-        />
-        Recipe Name:
-        {{ selectRecipePK.name}}
-      </div>
-      {{/if}}
-
-
-{{!-- all recipes --}}
+    {{! all recipes }}
     {{#each recipes as |recipe|}}
       <div class='recipe-content'>
-        <a href="api/recipes/{{recipe.id}}">
-        <img
-          src='/assets/uploads/{{recipe.photo}}'
-          class='rounded py-9 px-9 d-flex align-content-center'
-          height='130px'
-          width='216px'
-          alt='{{recipe.name}}'
-        />
-        <ul>
-          <li> <strong>name:</strong> {{recipe.name}}</li>
-
-          <!--         <li>
-          <strong>ingredients:</strong>
-          {{recipe.ingredients}}
-        </li>
-        <li>
-          <strong>recipe:</strong>
-          {{recipe.method}}
-        </li>
-        <li>
-          <strong>prep time:</strong>
-          {{recipe.prepTime}}
-        </li>
-        <li>
-          <strong>date created:</strong>
-          {{recipe.dateCreated}}
-        </li>
-        <li>
-          <strong>likes :</strong>
-          {{recipe.likes}}
-        </li>
-        <li>
-          <strong>has nuts:</strong>
-          {{recipe.has_nuts}}
-        </li>
-        <li>
-          <strong>vegan:</strong>
-          {{recipe.vegan}}
-        </li> -->
-        </ul>
-                </a>
+        <a href='/recipes/{{recipe.id}}'>
+          <img
+            src='/assets/uploads/{{recipe.photo}}'
+            class='rounded py-9 px-9 d-flex align-content-center'
+            height='130px'
+            width='216px'
+            alt='{{recipe.name}}'
+          />
+          <ul>
+            <li> <strong>name:</strong> {{recipe.name}}</li>
+          </ul>
+        </a>
       </div>
     {{/each}}
-</div>
+  </div>
 </div>
