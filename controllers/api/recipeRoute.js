@@ -19,7 +19,7 @@ router.get('/:id', withAuth, async (req, res) => {
       recipe,
       comments,
       logged_in: req.session.logged_in,
-      banner:true
+      login:true
     });
   } catch (err) {
     res.status(500).json(err);
@@ -27,16 +27,20 @@ router.get('/:id', withAuth, async (req, res) => {
 });
 //update likes count
 router.put('/:id', withAuth, (req, res) => {
-  const action = req.body.action;
-  const recipeId = req.body.recipeId;
-  const counter = action === '\u2661' ? 1 : -1;
-  const recipeData = Recipe.increment(
-    { likes: +counter },
-    {
-      where: { id: recipeId },
-    }
-  );
-  res.status(200).json(recipeData);
+  try {
+    const action = req.body.action;
+    const recipeId = req.body.recipeId;
+    const counter = action === '\u2661' ? 1 : -1;
+    const recipeData = Recipe.increment(
+      { likes: +counter },
+      {
+        where: { id: recipeId },
+      }
+    );
+    res.status(200).json(recipeData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 //comments add
 router.post('/:id', withAuth, async (req, res) => {

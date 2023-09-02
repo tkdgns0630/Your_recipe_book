@@ -1,5 +1,5 @@
-<div class='login-content' >
-  <h2 >Welcome, {{name}}!</h2>
+<div class='login-content'>
+  <h2>Welcome, {{name}}!</h2>
   <a class='Addrep ml-4' href='/api/add-recipe'>
     Add Recipe</a>
 </div>
@@ -12,7 +12,7 @@
       {{#each recipes as |recipe|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <a href='/recipes/{{recipe.id}}'><h4>{{name}}</h4>
+            <a href='/api/recipes/{{recipe.id}}'><h4>{{name}}</h4>
               <img
                 src='/assets/uploads/{{photo}}'
                 class='rounded py-9 px-9 d-flex align-content-center'
@@ -39,9 +39,10 @@
       <h3>Favourite recipes:</h3>
 
       {{#each UserFavRecipes}}
+     
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <a href='/recipe/{{photo}}'><h4>{{name}}</h4>
+            <a href='/api/recipes/{{id}}'><h4>{{name}}</h4>
               <img
                 src='/assets/uploads/{{photo}}'
                 class='rounded py-9 px-9 d-flex align-content-center'
@@ -49,7 +50,7 @@
                 width='500px'
                 alt='{{name}}'
               /></a>
-            <a href='https://www.google.com.au/'>{{recipe.name}}</a>
+            <a href='/api/recipes/{{id}}'>{{recipe.name}}</a>
           </div>
           <div class='col-md-4'>
             <button class='delBut btn btn-sm btn-danger' user-id='{{id}}'><i
@@ -62,6 +63,5 @@
   {{/if}}
 </div>
 <br />
-</div>
-</div>
+
 <script src='/js/profile.js'></script>
