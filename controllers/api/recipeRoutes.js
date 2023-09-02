@@ -19,7 +19,7 @@ router.get('/:id', withAuth, async (req, res) => {
       recipe,
       comments,
       logged_in: req.session.logged_in,
-      login:true
+      banner:true
     });
   } catch (err) {
     res.status(500).json(err);
