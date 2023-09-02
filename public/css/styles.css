@@ -150,6 +150,13 @@ label[for=thirty],label[for=fourty-five]{
   box-shadow: 0 4px 6px -6px #372e2e;
   margin-bottom: 20px;
 }
+#recipe-comments{
+  width:100%;
+  margin-bottom: 15px;
+}
+.comments-text{
+  border: 2px solid rgb(141, 138, 138);
+}
 /* media queries */
 @media screen and (min-width: 768px) {
   .recipe-content,

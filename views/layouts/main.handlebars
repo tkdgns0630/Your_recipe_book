@@ -18,9 +18,13 @@
       crossorigin='anonymous'
     ></script>
     <link rel='stylesheet' href='/css/styles.css' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
+    <script
+      src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js'
+    ></script>
+    <script
+      src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'
+    ></script>
+
   </head>
   <body>
     <header>
@@ -85,33 +89,31 @@
           </ul>
         </div>
       </nav>
-     {{#unless login}}
-      <div class='banner'>
-        <img src='/images/banner.jpg' alt='yummy pizza' />
-        <form class='form-inline my-2 my-lg-0'>
-          <input
-            class='form-control mr-sm-2'
-            type='search'
-            placeholder='Search'
-            aria-label='Search'
-          />
-          <button class='btn my-2 my-sm-0 search-btn' type='submit'><i
-              class='fa fa-search'
-            ></i></button>
-        </form>
-      </div>
-    </header>
-    {{/unless}}
+      {{#unless login}}
+        <div class='banner'>
+          <img src='/images/banner.jpg' alt='yummy pizza' />
+          <form class='form-inline my-2 my-lg-0'>
+            <input
+              class='form-control mr-sm-2'
+              type='search'
+              placeholder='Search'
+              aria-label='Search'
+            />
+            <button class='btn my-2 my-sm-0 search-btn' type='submit'><i
+                class='fa fa-search'
+              ></i></button>
+          </form>
+        </div>
+
+      {{/unless}}
     </header>
 
-        {{{body}}}
-     
-    </div>
+    {{{body}}}
 
     {{#if logged_in}}
       <script src='/js/logout.js'></script>
     {{/if}}
-      
+
     <script
       src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js'
       integrity='sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm'

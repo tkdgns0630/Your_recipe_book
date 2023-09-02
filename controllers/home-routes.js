@@ -8,7 +8,7 @@ router.get('/login', (req, res) => {
     res.redirect('/api/user-profile');
     return;
   }
-  res.render('login',{login: true});
+  res.render('login',{banner: true});
 });
 
 // route to get all categories and recipies

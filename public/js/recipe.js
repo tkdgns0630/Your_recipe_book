@@ -21,7 +21,7 @@ var newEventHandler = async function (event) {
     var action = event.target.textContent.trim();
     const response = await fetch(`/api/recipes/${recipeId}`, {
       method: 'PUT',
-      body: JSON.stringify({ recipeId,action }),
+      body: JSON.stringify({ recipeId, action }),
       headers: { 'Content-Type': 'application/json' }
     });
 
@@ -33,3 +33,38 @@ var newEventHandler = async function (event) {
   }
 };
 likeBtn.addEventListener('click', newEventHandler);
+
+const commentFormHandler = async (event) => {
+  event.preventDefault();
+  const recId = document.querySelector('input[name="comment"]').value;
+
+  console.log('test');
+  console.log(recId);
+
+  const commentText = document.querySelector(
+    'textarea[name="recipe-comments"]'
+  ).value;
+  console.log(commentText);
+
+  if (commentText) {
+    const response = await fetch(`/api/recipes/${recId}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        recId,
+        commentText
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.ok) {
+      document.location.reload();
+    } else {
+      alert('unable to comment');
+    }
+  }
+};
+
+document
+  .querySelector('.new-comment-form')
+  .addEventListener('submit', commentFormHandler);
