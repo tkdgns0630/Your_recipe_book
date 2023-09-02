@@ -28,7 +28,7 @@ var newEventHandler = async function (event) {
     }
   }
 };
-likeBtn.addEventListener('click', newEventHandler);
+
 
 const commentFormHandler = async (event) => {
   event.preventDefault();
@@ -58,6 +58,7 @@ const commentFormHandler = async (event) => {
   }
 };
 
+likeBtn.addEventListener('click', newEventHandler);
 document
   .querySelector('.new-comment-form')
   .addEventListener('submit', commentFormHandler);
