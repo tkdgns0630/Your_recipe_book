@@ -2,6 +2,7 @@
   <div class='grid-container'>
 {{!-- recipe by category id --}}
     {{#each recipePK.recipes as |recipe|}}
+    <a href="api/recipes/{{recipe.id}}">
       <div class='recipe-content'>
         <img
           src='/assets/uploads/{{recipe.photo}}'
@@ -13,6 +14,7 @@
         Recipe Name:
         {{recipe.name}}
       </div>
+    </a>
     {{/each}}   
 
 {{!-- recipe by  id --}}
