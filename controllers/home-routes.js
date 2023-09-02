@@ -46,7 +46,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // get recipe by id
-router.get('/recipes/:id', withAuth, async (req, res) => {
+router.get('/recipes/:id', async (req, res) => {
   try {
     const loggedIn = req.session.logged_in;
     const categoryData = await Category.findAll();
