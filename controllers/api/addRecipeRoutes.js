@@ -24,19 +24,17 @@ router.get('/', async (req, res) => {
         attributes: { exclude: ['password'] },
         include: [{ model: Recipe }],
       });
-
       const user = userData.get({ plain: true });
       const categoryData = await Category.findAll();
-
       const categories = categoryData.map((category) =>
         category.get({ plain: true })
       );
 
       res.render('addRecipe', {
-        layout:'layout',
+        layout: 'layout',
         user,
         categories,
-        logged_in: req.session.logged_in
+        logged_in: req.session.logged_in,
       });
       return;
     }

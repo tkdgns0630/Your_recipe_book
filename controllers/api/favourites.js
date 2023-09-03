@@ -22,4 +22,17 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+router.post('/:id', withAuth, async (req, res) => {
+  try {
+    const userData = await UserFavourites.create({
+      user_id: req.body.userId,
+      recipe_id: req.body.addId,
+    });
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

@@ -76,3 +76,26 @@ window.onload = () => {
     likeBtn.textContent = whiteHeart;
   }
 };
+
+const addToFab = async (event) => {
+  if (event.target.hasAttribute('add-id')) {
+    const addId = event.target.getAttribute('add-id');
+    const userId = event.target.getAttribute('user-id');
+    const response = await fetch(`/api/favourites/${addId}`, {
+      method: 'POST',
+      body: JSON.stringify({ addId, userId }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    if (response.ok) {
+      document.location.replace('/api/user-profile');
+    } else {
+      return console.log('error');
+    }
+  }
+};
+
+addToFav = document.querySelectorAll('.add-but');
+
+addToFav.forEach((add) => {
+  add.addEventListener('click', addToFab);
+});
