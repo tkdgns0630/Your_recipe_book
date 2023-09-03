@@ -133,13 +133,7 @@ label[for=thirty],label[for=fourty-five]{
   width: 80%;
   height: 80%;
 }
-.recipe-content h3{
-  /* border: 2px solid #ccc; */
-   background-color: #383846;
-    width:30%;
-    padding-left: 5px;
-    color: #ccc;
-}
+
 .card{
   margin-right: 30px;
   border: 1px solid #ccc;
@@ -164,6 +158,12 @@ label[for=thirty],label[for=fourty-five]{
 .comments-text{
   border: 2px solid rgb(141, 138, 138);
   padding-left: 10px;
+}
+.btn-add{
+  background-color: #383846;
+    width:30%;
+    padding-left: 5px;
+    color: #ccc;
 }
 /* media queries */
 @media screen and (min-width: 768px) {
