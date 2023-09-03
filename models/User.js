@@ -28,16 +28,11 @@ User.init(
         isEmail: true,
       },
     },
-    is_admin: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [8],
-        //is: /^[a-z]+$/i
       },
     },
   },

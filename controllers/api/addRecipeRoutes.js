@@ -5,8 +5,6 @@ const upload = require('../../utils/upload');
 
 router.post('/', [withAuth, upload.single('file')], async (req, res) => {
   try {
-    console.log(req.file.filename);
-    console.log(req.body);
     const recipeData = await Recipe.create({
       ...req.body,
       photo: req.file.filename,
@@ -38,8 +36,7 @@ router.get('/', async (req, res) => {
         layout:'layout',
         user,
         categories,
-        logged_in: req.session.logged_in,
-        login: true
+        logged_in: req.session.logged_in
       });
       return;
     }

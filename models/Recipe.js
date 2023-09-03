@@ -64,6 +64,7 @@ Recipe.init(
     },
     photo: {
       type: DataTypes.BLOB('long'),
+      allowNull: false,
     },
   },
   {

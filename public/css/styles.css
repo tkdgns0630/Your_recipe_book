@@ -115,7 +115,7 @@ label[for=thirty],label[for=fourty-five]{
   grid-auto-rows: minmax(100px, auto);
   margin-bottom: 2rem;
   margin-top: 2rem;
-  gap: 2rem;
+  /* gap: 2rem; */
 }
 
 .recipe-content,
@@ -149,6 +149,14 @@ label[for=thirty],label[for=fourty-five]{
 .card h3{  
   box-shadow: 0 4px 6px -6px #372e2e;
   margin-bottom: 20px;
+}
+#recipe-comments{
+  width:100%;
+  margin-bottom: 15px;
+}
+.comments-text{
+  border: 2px solid rgb(141, 138, 138);
+  padding-left: 10px;
 }
 /* media queries */
 @media screen and (min-width: 768px) {
