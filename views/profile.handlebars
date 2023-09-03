@@ -32,14 +32,15 @@
       {{/each}}
     </div>
   {{/if}}
-
+</div>
+<div class='ml-5 d-flex row'>
   {{#if UserFavRecipes}}
 
     <div class='recipe-list col-sm'>
       <h3>Favourite recipes:</h3>
 
       {{#each UserFavRecipes}}
-     
+
         <div class='row mb-2'>
           <div class='col-md-8'>
             <a href='/recipes/{{id}}'><h4>{{name}}</h4>
