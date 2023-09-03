@@ -1,34 +1,9 @@
     {{! recipe by category id }}
     {{#each recipePK.recipes as |recipe|}}
-        <div class='recipe-content'>
-      <a href='/recipes/{{recipe.id}}'>
-          <img
-            src='/assets/uploads/{{recipe.photo}}'
-            class='rounded py-9 px-9 d-flex align-content-center'
-            height='130px'
-            width='216px'
-            alt='{{recipe.name}}'
-          />
-          Recipe Name:
-          {{recipe.name}}
-      </a>
-        </div>
+       {{>recipe}}
     {{/each}}
 
     {{! all recipes }}
     {{#each recipes as |recipe|}}
-      <div class='recipe-content'>
-        <a href='/recipes/{{recipe.id}}'>
-          <img
-            src='/assets/uploads/{{recipe.photo}}'
-            class='rounded py-9 px-9 d-flex align-content-center'
-            height='130px'
-            width='216px'
-            alt='{{recipe.name}}'
-          />
-          <ul>
-            <li> <strong>name:</strong> {{recipe.name}}</li>
-          </ul>
-        </a>
-      </div>
+     {{>recipe}}
     {{/each}}
