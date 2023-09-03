@@ -5,7 +5,8 @@
    </div> 
 </div>
 <br />
-<div class='login-content'><div class="recipe-content">{{#if recipes}}
+
+  {{#if recipes}}
     <div class='recipe-list col-sm'>
       <h2>User Recipes:</h2>
       {{#each recipes as |recipe|}}
@@ -22,9 +23,8 @@
       {{/each}}
     </div>
   {{/if}}
-</div></div>
-  <div class='login-content'><div class="recipe-content">
-    {{#if UserFavRecipes}}
+
+  {{#if UserFavRecipes}}
     <div class='recipe-list col-sm'>
       <h2>Favourite recipes:</h2>
       {{#each UserFavRecipes}}
@@ -40,8 +40,6 @@
     </div>
   {{/if}}
 
-  </div></div>
-  
 <br />
 
 <script src='/js/profile.js'></script>
