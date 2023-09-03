@@ -156,6 +156,7 @@ label[for=thirty],label[for=fourty-five]{
 }
 .comments-text{
   border: 2px solid rgb(141, 138, 138);
+  padding-left: 10px;
 }
 /* media queries */
 @media screen and (min-width: 768px) {

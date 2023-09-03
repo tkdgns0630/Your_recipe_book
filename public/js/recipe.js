@@ -54,6 +54,7 @@ const commentFormHandler = async (event) => {
       },
     });
     if (response.ok) {
+      console.log(response);
       document.location.reload();
     } else {
       alert('unable to comment');

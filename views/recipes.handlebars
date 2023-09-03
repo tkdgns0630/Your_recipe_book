@@ -54,11 +54,11 @@
         </form>
       </div>
       <div class="all-comments">
-        {{#if comments}}
-        All Comments:
-  {{#each comments as |comment|}}
- 
-    <p class="comments-text">
+        {{#if recipe.comments}}
+        <h3>All Comments:</h3>
+  {{#each recipe.comments as |comment|}}
+ <h5>{{comment.user.name}}:</h5> 
+    <p class="comments-text">   
     {{comment.body}}
     </p>
  
