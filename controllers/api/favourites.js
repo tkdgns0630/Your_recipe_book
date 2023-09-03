@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { UserFavourites } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//delete recipe from favourites
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const recipeData = await UserFavourites.destroy({
@@ -22,6 +23,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+// add recipe to favourites
 router.post('/:id', withAuth, async (req, res) => {
   try {
     const userData = await UserFavourites.create({

@@ -2,7 +2,6 @@ const User = require('./User');
 const Recipe = require('./Recipe');
 const Category = require('./Category');
 const Comment = require('./Comment');
-//const CategoryTag = require('./CategoryTag'); Legacy code
 const UserFavourites = require('./UserFavourites');
 
 User.hasMany(Recipe, {
@@ -43,6 +42,7 @@ Category.hasMany(Recipe, {
 
 User.belongsToMany(Recipe, {
   through: {
+    // junction table for add to favourites
     model: UserFavourites,
     unique: 'false',
     onDelete: 'SET NULL',

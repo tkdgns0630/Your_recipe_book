@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { UserFavourites, User, Recipe, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// get user including favourite recipes
 router.get('/', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -16,13 +17,11 @@ router.get('/', withAuth, async (req, res) => {
         },
       ],
     });
-    console.log(userData);
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
     );
     const user = userData.get({ plain: true });
-    console.log(user);
 
     res.render('profile', {
       categories,
@@ -33,7 +32,7 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+// delete recipe by id
 router.delete('/:id', async (req, res) => {
   try {
     const recipeData = await Recipe.destroy({

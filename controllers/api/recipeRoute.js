@@ -7,6 +7,7 @@ router.put('/:id', withAuth, (req, res) => {
   const action = req.body.action;
   const recipeId = req.body.recipeId;
   const counter = action === '\u2661' ? 1 : -1;
+  //increase like by one
   const recipeData = Recipe.increment(
     { likes: +counter },
     {

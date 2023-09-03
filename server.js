@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-// create instaance of handlebars engine
+// create instance of handlebars engine
 const hbs = exphbs.create({});
 const app = express();
 const PORT = process.env.PORT || 3001;

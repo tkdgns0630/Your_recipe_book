@@ -13,6 +13,7 @@ router.get('/login', async (req, res) => {
       res.redirect('/api/user-profile');
       return;
     }
+    //pass category list
     res.render('login', { categories, login: true });
   } catch (err) {
     res.status(500).json(err);
@@ -38,7 +39,7 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-// route to get date created
+// route to get date created-latest recipes
 router.get('/date', async (req, res) => {
   try {
     const loggedIn = req.session.logged_in;
@@ -93,13 +94,12 @@ router.get('/recipes/:id', withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
     });
-    console.log(userData);
-    console.log(userData.dataValues.id);
 
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
     );
+    // recipe including comments by user
     const recipeData = await Recipe.findByPk(req.params.id, {
       include: [
         {
@@ -118,7 +118,6 @@ router.get('/recipes/:id', withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
       login: true,
     });
-    // res.json(recipeData)
   } catch (err) {
     res.status(500).json(err);
   }

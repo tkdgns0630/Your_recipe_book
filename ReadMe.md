@@ -17,7 +17,7 @@ Alternatively, it can be run on a localhost 3001 with the command 'npm start' af
 This is a proof of concept site that demonstrates a basic forum based around sharing recipes. Users can sign up and add recipes to the integral database. From there they can be liked, commented on and added to a favourite list accessable from the profile page. Additionally, recipes can be searched and organised by categories.
 
 ## Contributions
-This project was made with assistance of Paolo van Reyk, Sakshi Arora and Tristen Hobba. Along with assistance of express.js, express sessions, express handlebars, sequelize, multer, bootstrap 4.0, mysql2, bcrypt, eslint and dotenv.
+This project was made with assistance of Paolo van Reyk, Sakshi Arora, Tristen Hobba and Sanghun Yun. Along with assistance of express.js, express sessions, express handlebars, sequelize, multer, bootstrap 4.0, mysql2, bcrypt, eslint and dotenv.
 
 ## Tests
 Dummy data is available in the seeds file and can be run in the terminal with the command 'npm run seed', which can be used to test functionality.
