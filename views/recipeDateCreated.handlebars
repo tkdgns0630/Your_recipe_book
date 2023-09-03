@@ -1,0 +1,15 @@
+                {{#each dateCreate as |date| }}
+                {{!-- {{> recipe}} --}}
+                    <img
+      src='/assets/uploads/{{photo}}'
+      class='rounded py-9 px-9 d-flex align-content-center'
+      height='130px'
+      width='216px'
+      alt='{{name}}'
+    />
+              <br>
+         {{date.name}}
+         <br>
+{{date.date_created}}
+        {{/each}}</li>
+      
