@@ -54,8 +54,14 @@ router.get('/:id', async (req, res) => {
 });
 
 // get recipe by id
-router.get('/recipes/:id',withAuth, async (req, res) => {
+router.get('/recipes/:id', withAuth, async (req, res) => {
   try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+    });
+    console.log(userData);
+    console.log(userData.dataValues.id);
+
     const categoryData = await Category.findAll();
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
@@ -72,6 +78,7 @@ router.get('/recipes/:id',withAuth, async (req, res) => {
     });
     const recipe = recipeData.get({ plain: true });
     res.render('recipes', {
+      userData,
       recipe,
       categories,
       logged_in: req.session.logged_in,
