@@ -31,9 +31,7 @@ router.get('/', async (req, res) => {
     const dateCreated = await Recipe.findAll({
       order: [['date_created', 'ASC']],
     });
-    const dateCreate = dateCreated.map((date) =>
-    date.get({ plain: true })
-  );
+    const dateCreate = dateCreated.map((date) => date.get({ plain: true }));
     const recipes = recipeData.map((recipie) => recipie.get({ plain: true }));
     res.render('all', { dateCreate, recipes, categories, logged_in: loggedIn });
   } catch (error) {
@@ -52,11 +50,20 @@ router.get('/date', async (req, res) => {
     const dateCreated = await Recipe.findAll({
       order: [['date_created', 'DESC']],
     });
-    const dateCreate = dateCreated.map((date) =>
-    date.get({ plain: true })
-  );
+    const dateCreate = dateCreated.map((date) => {
+      const recipe = date.get({ plain: true });
+      recipe.date_created = new Date(recipe.date_created).toLocaleString(
+        'en-AU'
+      );
+      return recipe;
+    });
     const recipes = recipeData.map((recipie) => recipie.get({ plain: true }));
-    res.render('recipeDateCreated', { dateCreate, recipes, categories, logged_in: loggedIn });
+    res.render('recipeDateCreated', {
+      dateCreate,
+      recipes,
+      categories,
+      logged_in: loggedIn,
+    });
   } catch (error) {
     res.status(500).json(err);
   }
