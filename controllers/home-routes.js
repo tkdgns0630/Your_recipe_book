@@ -28,8 +28,35 @@ router.get('/', async (req, res) => {
     const categories = categoryData.map((category) =>
       category.get({ plain: true })
     );
+    const dateCreated = await Recipe.findAll({
+      order: [['date_created', 'ASC']],
+    });
+    const dateCreate = dateCreated.map((date) =>
+    date.get({ plain: true })
+  );
     const recipes = recipeData.map((recipie) => recipie.get({ plain: true }));
-    res.render('all', { recipes, categories, logged_in: loggedIn });
+    res.render('all', { dateCreate, recipes, categories, logged_in: loggedIn });
+  } catch (error) {
+    res.status(500).json(err);
+  }
+});
+// route to get date created
+router.get('/date', async (req, res) => {
+  try {
+    const loggedIn = req.session.logged_in;
+    const categoryData = await Category.findAll();
+    const recipeData = await Recipe.findAll();
+    const categories = categoryData.map((category) =>
+      category.get({ plain: true })
+    );
+    const dateCreated = await Recipe.findAll({
+      order: [['date_created', 'DESC']],
+    });
+    const dateCreate = dateCreated.map((date) =>
+    date.get({ plain: true })
+  );
+    const recipes = recipeData.map((recipie) => recipie.get({ plain: true }));
+    res.render('recipeDateCreated', { dateCreate, recipes, categories, logged_in: loggedIn });
   } catch (error) {
     res.status(500).json(err);
   }
