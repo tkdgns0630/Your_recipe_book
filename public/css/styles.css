@@ -133,6 +133,13 @@ label[for=thirty],label[for=fourty-five]{
   width: 80%;
   height: 80%;
 }
+.recipe-content h3{
+  /* border: 2px solid #ccc; */
+   background-color: #383846;
+    width:30%;
+    padding-left: 5px;
+    color: #ccc;
+}
 .card{
   margin-right: 30px;
   border: 1px solid #ccc;
@@ -176,4 +183,5 @@ label[for=thirty],label[for=fourty-five]{
 .add-rep {
   font-weight: bold;
   font-size: 20px;
+  color: black;
 }

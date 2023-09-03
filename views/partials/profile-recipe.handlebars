@@ -1,0 +1,19 @@
+<div class='row mb-2'>
+          <div class='col-md-8'>
+            <a href='/recipes/{{recipe.id}}'><h4><strong>{{name}}</strong></h4>
+              <img
+                src='/assets/uploads/{{photo}}'
+                class='rounded py-9 px-9 d-flex align-content-center'
+                height='350px'
+                width='500px'
+                alt={{name}}
+              /></a>
+          </div>
+          <div class='col-md-4'>
+            <button
+              class='btn btn-sm btn-danger del-per'
+              data-id='{{recipe.id}}'
+            ><i class='fa-solid fa-trash'></i></button>
+          </div>
+
+        </div>
