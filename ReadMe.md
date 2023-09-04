@@ -18,13 +18,14 @@ Alternatively, it can be run on a localhost 3001 with the command 'npm start' af
 
 ## Usage
 
-- User is presented with the home page when the application is opened. The homepage contains menu, login button and it displays all recipes name and image.
-- When user click on categories, then a page is opened with all recipes fall under selected category.
-- When user clicks on latest recipes, then it shows all recipes date-wise.
-- After logging, user is redirected to profile page where user created recipes and favourite recipes has been displayed side by side. These recipe boxes has delete button to delete user created recipes and to remove recipes from favourites.
-- when user clicks on recipe photo or name, then a page is opened to display recipe in detail. There is option to add recipes to favourite.
--User can like and add valuable comments. All comments are displayed on the same page.
-- There is add recipe link on profile page, there logged in user can create recipes and upload photo.
+-As a User I am presented with a homepage that contains menu, login button and it displays all recipes names and image.
+-When I click on a category, then a page is opened with all recipes fall under selected category.
+-When user clicks on latest recipes I am shown a list of the most recently posted recipes.
+-When I login I am redirected to my profile page. There I can see recipes I have added myself and ones I have favourited.
+-On my Profile Page I can delete my own recipes and remove recipes from my favourites.
+-On same Page I can add a new recipe, including the option to upload a picture of the dish 
+-When I click on a recipe I am redirected to a page with said recipe’s Ingredients and method along with dietary information. -On that page, I can like, favourite and give my own feedback.
+
 
 This is a proof of concept site that demonstrates a basic forum based around sharing recipes. Users can sign up and add recipes to the integral database.
 
