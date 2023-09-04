@@ -59,7 +59,7 @@ The following images show the web application's appearance and functionality :
 Collaborators
 
 This project was made with assistance of 
-- Paolo van Reyk (https://github.com/tkdgns0630)
+- Paolo van Reyk (https://github.com/anUF0)
 - Sakshi Arora (https://github.com/sakshiarora04)
 - Tristen Hobba (https://github.com/Tristenh)
 - Sanghun Yun (https://github.com/tkdgns0630)
