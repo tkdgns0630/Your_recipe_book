@@ -1,80 +1,85 @@
-
-  <div class='login-content'>
-    <div class='recipe-content card'>
-      <img
-        src='/assets/uploads/{{recipe.photo}}'
-        class='rounded py-9 px-9 d-flex align-content-center'
-        height='130px'
-        width='216px'
-        alt='{{recipe.name}}'
-      />
-    </div>
-
-    <button
-class='btn btn-sm add-but'
-add-id='{{recipe.id}}'
-user-id='{{userData.dataValues.id}}'
-><i class='fa-solid fa-plus'></i> Add to Fav</button>
-
+<div class='login-content'>
+  <div class='recipe-content card'>
+    <img
+      src='/assets/uploads/{{recipe.photo}}'
+      class='rounded py-9 px-9 d-flex align-content-center'
+      height='130px'
+      width='216px'
+      alt='{{recipe.name}}'
+    />
   </div>
+{{!-- button to add in favourites list --}}
+  <button
+    class='btn btn-sm add-but'
+    add-id='{{recipe.id}}'
+    user-id='{{userData.dataValues.id}}'
+  ><i class='fa-solid fa-plus'></i> Add to Fav</button>
+<div id="add-fav"></div>
+</div>
 
-
-  <div class='login-content'>
-    <div class='recipe-content card'>
-      <div class='row-md-12 mx-1'><h2>{{recipe.name}}
-          <button data-id='{{recipe.id}}' id='like-btn' data-value='\u2661'>
-            ♡
-            {{! <i
+<div class='login-content'>
+  <div class='recipe-content card'>
+    <div class='row-md-12 mx-1'><h2>{{recipe.name}}
+      {{!-- button to add like --}}
+        <button data-id='{{recipe.id}}' id='like-btn' data-value='\u2661'>
+          ♡
+          {{! <i
             class='fa fa-heart'
             style='color: rgb(78, 3, 3);'
             aria-hidden='true'
           ></i> }}
-          </button></h2></div>
-      <div class='row-md-12 mx-1'>
-        <div class='mx-1'><h3>PrepTime</h3>
-          <h5>{{recipe.prep_time}} mins</h5></div>
-      </div>
-      <div class='row-md-12 mx-1'><h3>Ingredients (
-          {{#if recipe.vegan}}V
-          {{else}}
-            NV
-          {{/if}}
-          {{#if recipe.has_nuts}}/Contain nuts{{/if}}
-          )</h3>{{recipe.ingredients}}
-
-      </div>
-      <div class='row-md-12 mx-1'><h3>Method</h3>{{recipe.method}}</div>
-      <div class='row-md-12 mx-1'>Likes</div>
-      <div class='row-md-12 mx-1' id='count-{{recipe.id}}' data-initial-value='{{recipe.likes}}'>{{recipe.likes}}</div>
-      <div class='row-md-12 mx-1'><h3>Add your valuable comment:</h3>
-        <form class='new-comment-form' id='comments'>
-          <div class='form-group'>
-            <input type='hidden' name='comment' value='{{recipe.id}}'></input>
-            <textarea
-              class='form-input'
-              id='recipe-comments'
-              name='recipe-comments'
-            ></textarea>
-            <button
-              type='submit'
-              class='btn btn-primary comment-btn'
-            >Submit</button>
-          </div>
-        </form>
-      </div>
-      <div class="all-comments">
-        {{#if recipe.comments}}
-        <h3>All Comments:</h3>
-  {{#each recipe.comments as |comment|}}
-{{>comment}}
-  {{/each}}
- 
-  {{/if}}
-</div>
+        </button></h2></div>
+    <div class='row-md-12 mx-1'>
+      <div class='mx-1'><h3>PrepTime</h3>
+        <h5>{{recipe.prep_time}} mins</h5></div>
     </div>
-    <a href='/api/user-profile'><h2>Go Back to Profile</h2></a>
+    <div class='row-md-12 mx-1'><h3>Ingredients (
+        {{#if recipe.vegan}}V
+        {{else}}
+          NV
+        {{/if}}
+        {{#if recipe.has_nuts}}/Contain nuts{{/if}}
+        )</h3>{{recipe.ingredients}}
 
+    </div>
+    <div class='row-md-12 mx-1'><h3>Method</h3>{{recipe.method}}</div>
+    <div class='row-md-12 mx-1'>Likes</div>
+    {{!-- get initial value of likes --}}
+    <div
+      class='row-md-12 mx-1'
+      id='count-{{recipe.id}}'
+      data-initial-value='{{recipe.likes}}'
+    >{{recipe.likes}}</div>
+    <div class='row-md-12 mx-1'><h3>Add your valuable comment:</h3>
+      <form class='new-comment-form' id='comments'>
+        <div class='form-group'>
+          {{!-- input value to pass recipe id --}}
+          <input type='hidden' name='comment' value='{{recipe.id}}' />
+          <textarea
+            class='form-input'
+            id='recipe-comments'
+            name='recipe-comments'
+          ></textarea>
+          <button
+            type='submit'
+            class='btn btn-primary comment-btn'
+          >Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class='all-comments'>
+      {{!-- check condition to show all comments --}}
+      {{#if recipe.comments}}
+        <h3>All Comments:</h3>
+        {{#each recipe.comments as |comment|}}
+          {{>comment}}
+        {{/each}}
+
+      {{/if}}
+    </div>
   </div>
+  <a href='/api/user-profile'><h2>Go Back to Profile</h2></a>
 
+</div>
 
 <script src='/js/recipe.js'></script>

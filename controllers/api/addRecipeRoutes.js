@@ -1,8 +1,9 @@
 const router = require('express').Router();
-const { Recipe, User, Category } = require('../../models');
+const { Recipe, Category } = require('../../models');
 const withAuth = require('../../utils/auth');
 const upload = require('../../utils/upload');
 
+// recipe create with uploading file using middleware
 router.post('/', [withAuth, upload.single('file')], async (req, res) => {
   try {
     const recipeData = await Recipe.create({
@@ -16,15 +17,10 @@ router.post('/', [withAuth, upload.single('file')], async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/',withAuth, async (req, res) => {
   try {
     if (req.session.logged_in) {
-      // Find the logged in user based on the session ID
-      const userData = await User.findByPk(req.session.user_id, {
-        attributes: { exclude: ['password'] },
-        include: [{ model: Recipe }],
-      });
-      const user = userData.get({ plain: true });
+      // get category list
       const categoryData = await Category.findAll();
       const categories = categoryData.map((category) =>
         category.get({ plain: true })
@@ -32,7 +28,6 @@ router.get('/', async (req, res) => {
 
       res.render('addRecipe', {
         layout: 'layout',
-        user,
         categories,
         logged_in: req.session.logged_in,
       });

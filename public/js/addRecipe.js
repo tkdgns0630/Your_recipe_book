@@ -1,6 +1,6 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
-
+  // Collect values from the add recipe form
   const name = document.querySelector('#recipe-name').value.trim();
   const ingredients = document
     .querySelector('#recipe-ingredients')
@@ -13,6 +13,7 @@ const newFormHandler = async (event) => {
   const has_nuts = document.querySelector('#nuts:checked') !== null;
   const vegan = document.querySelector('#vegan:checked') !== null;
   const photo = document.querySelector('#input-files').files[0];
+  // formdata for sending all content types
   const formData = new FormData();
   formData.append('name', name);
   formData.append('ingredients', ingredients);
@@ -31,6 +32,7 @@ const newFormHandler = async (event) => {
     if (response.ok) {
       document.getElementById('add').innerHTML = 'Recipe Created successfully';
       setTimeout(function () {
+      // If successful, redirect the browser to the profile page
         document.location.replace('/api/user-profile');
       }, 2000);
     } else {

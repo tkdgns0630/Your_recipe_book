@@ -8,7 +8,7 @@ router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
 // route to get all recipes
 router.get('/', async (req, res) => {
-  // We find all dishes in the db and set the data equal to dishData
+  // We find all recipes in the db
   const recipeData = await Recipe.findAll().catch((err) => {
     res.json(err);
   });
@@ -21,7 +21,6 @@ router.get('/login', (req, res) => {
     res.redirect('/profile');
     return;
   }
-
   res.render('login');
 });
 

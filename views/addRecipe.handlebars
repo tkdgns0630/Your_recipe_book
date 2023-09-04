@@ -4,7 +4,7 @@
     <div class='form-int bg-dark'>
       <div class='form-body'>
         <h3>Create a New Recipe:</h3>
-
+{{!-- add recipe form --}}
         <form class='new-recipe-form' enctype='multipart/form-data'>
           <div class='form-group col-md-12'>
             <label for='recipe-name'>Recipe name:</label>
@@ -44,6 +44,7 @@
             <label for='recipe-cat'>Category:</label>
 
             <select id='recipe-cat' aria-label='select cat'>
+              {{!-- display categories list --}}
               <option selected>Select Category</option>
               {{#each categories as |category|}}
                 <option value={{category.id}}>{{category.cat_name}}</option>
@@ -73,8 +74,7 @@
               type='submit'
               class='btn btn-primary'
             >Submit</button>
-      <p id='add' class='font-weight-bold text-primary'></p>
-           
+      <p id='add' class='font-weight-bold text-primary'></p>           
             </div>
           </div>
         </form>
